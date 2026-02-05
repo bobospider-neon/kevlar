@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KEVLAR 3D SUPREMACY - NASA Elite Defense Systems</title>
+    <title>KEVLAR 3D SUPREMACY - Elite Defense Systems</title>
     <script src="https://unpkg.com/three@0.128.0/build/three.min.js"></script>
     <script src="https://unpkg.com/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <link
@@ -155,18 +155,18 @@
 </head>
 
 <body>
+    <!-- Spider Web Background Overlay -->
+    <div class="spider-web-bg"></div>
+    <!-- Tech Grid Overlay -->
+    <div class="tech-grid-overlay"></div>
+
     <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="military-text loading-title gold-glow glitch">INITIALIZING KEVLAR MATRIX</div>
-            <div class="loading-subtitle">NASA ELITE DEFENSE SYSTEMS</div>
+            <div class="loading-subtitle">ELITE DEFENSE SYSTEMS</div>
             <div class="loading-bar">
                 <div class="loading-fill"></div>
-            </div>
-            <div class="loading-stats">
-                <span>3D ENGINE</span>
-                <span>WEBGL 2.0</span>
-                <span>GPU ACCELERATED</span>
             </div>
             <div class="data-stream loading-data">[LOADING 3D ASSETS] // BALLISTIC_CORE_SYSTEMS_ONLINE</div>
         </div>
@@ -191,7 +191,7 @@
                     <div class="pulse-ring delay-2"></div>
                 </div>
                 <h2 class="military-text security-title rgb-text">MAXIMUM SECURITY</h2>
-                <p class="security-subtitle">NASA ELITE ACCESS REQUIRED</p>
+                <p class="security-subtitle">ELITE ACCESS REQUIRED</p>
             </div>
             <div class="password-container">
                 <input type="password" id="password-input" class="password-input" placeholder="ENTER ACCESS CODE"
@@ -252,21 +252,7 @@
         </div>
     </div>
 
-    <!-- Free Gesture Notification -->
-    <div id="gesture-notification" class="gesture-notification hidden">
-        <div class="notification-content">
-            <div class="gesture-icon-3d">
-                <canvas id="gesture-icon-canvas"></canvas>
-            </div>
-            <span class="military-text rgb-text">FREE GESTURE: ON</span>
-            <p>Drag to rotate • Scroll to zoom • Right-click to pan</p>
-            <div class="gesture-controls">
-                <span class="control-hint">🖱️ LEFT: Rotate</span>
-                <span class="control-hint">🖱️ RIGHT: Pan</span>
-                <span class="control-hint">⚙️ SCROLL: Zoom</span>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Scan Overlay -->
     <div class="scan-overlay"></div>
@@ -279,15 +265,15 @@
         <!-- Hero Section -->
         <section class="content-section hero-section">
             <div class="hero-content">
-                <div class="data-stream">[SYSTEM_ONLINE] // NASA_PROTOCOL_ACTIVE // DEFENSE_MATRIX_ENGAGED</div>
+                <div class="data-stream">[SYSTEM_ONLINE] // PROTOCOL_ACTIVE // DEFENSE_MATRIX_ENGAGED</div>
 
-                <div class="nasa-badge">
-                    <span class="military-text">NASA APPROVED</span>
+                <div class="elite-badge">
+                    <span class="military-text">ELITE TECHNOLOGY</span>
                 </div>
 
                 <h1 class="military-text hero-title glitch gold-glow">KEVLAR 3D</h1>
                 <h2 class="military-text hero-subtitle rgb-text">SUPREMACY</h2>
-                <p class="hero-description">Arhitectură Balistică Bio-Mimetică NASA-Grade în 3D Real-Time</p>
+                <p class="hero-description">Arhitectură Balistică Bio-Mimetică în 3D Real-Time</p>
                 <p class="hero-subdesc">Tehnologie supremă pentru misiuni spațiale și apărare globală. Controlează
                     armura. Explorează fibrele moleculare. Simte puterea absolută.</p>
 
@@ -343,20 +329,7 @@
                         <span class="btn-rgb-border"></span>
                     </button>
 
-                    <button id="gesture-toggle-btn" class="rgb-glow-btn secondary-btn">
-                        <span class="btn-text">FREE GESTURE</span>
-                        <span class="btn-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"></circle>
-                                <path
-                                    d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
-                                </path>
-                            </svg>
-                        </span>
-                        <span class="btn-glow"></span>
-                        <span class="btn-rgb-border"></span>
-                    </button>
+
 
                     <button id="compare-btn" class="rgb-glow-btn accent-btn">
                         <span class="btn-text">COMPARE VS STEEL</span>
@@ -364,6 +337,19 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            </svg>
+                        </span>
+                        <span class="btn-glow"></span>
+                        <span class="btn-rgb-border"></span>
+                    </button>
+
+                    <button id="timeline-btn" class="rgb-glow-btn primary-btn">
+                        <span class="btn-text">ISTORIA KEVLAR</span>
+                        <span class="btn-icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
                             </svg>
                         </span>
                         <span class="btn-glow"></span>
@@ -378,62 +364,16 @@
             </div>
         </section>
 
-        <!-- NASA Technology Section -->
-        <section class="content-section nasa-section">
-            <div class="section-content">
-                <div class="data-stream">[NASA_TECH] // SPACE_GRADE_MATERIALS</div>
-                <h2 class="military-text section-title gold-glow">TEHNOLOGIE NASA</h2>
-                <p class="section-subtitle">Material folosit în misiuni spațiale reale</p>
 
-                <div class="nasa-grid">
-                    <div class="nasa-card tactical-border">
-                        <div class="nasa-icon">🚀</div>
-                        <h3 class="military-text">MISIUNI SPAȚIALE</h3>
-                        <p>Kevlarul protejează astronauții de micrometeorite cu viteze de 28,000 km/h</p>
-                        <div class="nasa-stat">
-                            <span class="stat-number gold">ISS</span>
-                            <span class="stat-desc">International Space Station Shield</span>
-                        </div>
-                    </div>
-                    <div class="nasa-card tactical-border">
-                        <div class="nasa-icon">🛸</div>
-                        <h3 class="military-text">MARS EXPLORATION</h3>
-                        <p>Folosit în parașutele rovers-elor Mars pentru aterizări de precizie</p>
-                        <div class="nasa-stat">
-                            <span class="stat-number cyan">21.5g</span>
-                            <span class="stat-desc">Forța de decelerare suportată</span>
-                        </div>
-                    </div>
-                    <div class="nasa-card tactical-border">
-                        <div class="nasa-icon">🛰️</div>
-                        <h3 class="military-text">SATELLITE PROTECTION</h3>
-                        <p>Scut anti-debris pentru sateliții de comunicații și observație</p>
-                        <div class="nasa-stat">
-                            <span class="stat-number gold">99.7%</span>
-                            <span class="stat-desc">Rată de protecție</span>
-                        </div>
-                    </div>
-                    <div class="nasa-card tactical-border">
-                        <div class="nasa-icon">👨🚀</div>
-                        <h3 class="military-text">SPACESUIT ARMOR</h3>
-                        <p>Integrare în costumele spațiale pentru EVA missions</p>
-                        <div class="nasa-stat">
-                            <span class="stat-number cyan">-270°C</span>
-                            <span class="stat-desc">Rezistență la temperaturi extreme</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Steel Comparison Section -->
         <section id="comparison-section" class="content-section comparison-section hidden">
             <div class="section-content">
-                <div class="data-stream">[COMPARISON] // KEVLAR_VS_STEEL_3D</div>
-                <h2 class="military-text section-title gold-glow">KEVLAR VS OȚEL</h2>
+                <div class="data-stream">[COMPARISON] // KEVLAR_VS_MATERIALS_3D</div>
+                <h2 class="military-text section-title gold-glow">KEVLAR VS OȚEL VS ALUMINIU</h2>
                 <p class="section-subtitle">Comparație 3D Interactivă la Nivel Molecular</p>
 
-                <div class="comparison-container">
+                <div class="comparison-container triple-compare">
                     <div class="comparison-panel kevlar-panel tactical-border">
                         <canvas id="kevlar-canvas" class="comparison-canvas"></canvas>
                         <div class="panel-label military-text gold-glow">KEVLAR</div>
@@ -484,6 +424,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="vs-indicator">
+                        <span class="military-text rgb-text">VS</span>
+                        <div class="vs-glow"></div>
+                    </div>
+
+                    <div class="comparison-panel aluminum-panel tactical-border">
+                        <div class="aluminum-visual">
+                            <div class="aluminum-cube"></div>
+                        </div>
+                        <div class="panel-label military-text cyan">ALUMINIU</div>
+                        <div class="panel-stats">
+                            <div class="panel-stat">
+                                <span class="stat-name">Densitate</span>
+                                <span class="stat-val cyan">2.70 g/cm³</span>
+                            </div>
+                            <div class="panel-stat">
+                                <span class="stat-name">Tensiune</span>
+                                <span class="stat-val cyan">310 MPa</span>
+                            </div>
+                            <div class="panel-stat">
+                                <span class="stat-name">Greutate</span>
+                                <span class="stat-val cyan">LIGHT</span>
+                            </div>
+                            <div class="panel-stat">
+                                <span class="stat-name">Flexibilitate</span>
+                                <span class="stat-val cyan">MEDIUM</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- VIDEO SECTION -->
@@ -521,30 +491,383 @@
                     </div>
                 </div>
 
-                <div class="comparison-result tactical-border">
-                    <div class="result-title military-text gold-glow">KEVLAR ADVANTAGE</div>
-                    <div class="result-grid">
-                        <div class="result-item">
-                            <div class="result-value military-text gold-glow">9x</div>
-                            <div class="result-label">Rezistență/Greutate</div>
+                <!-- DETAILED COMPARISON RESULTS -->
+                <div class="comparison-result-detailed">
+                    <div class="data-stream" style="text-align: center; margin-bottom: 1rem;">[ANALYSIS] //
+                        MATERIAL_COMPARISON_RESULTS</div>
+                    <h3 class="military-text section-title rgb-text" style="font-size: 1.8rem; margin-bottom: 2rem;">🏆
+                        DE CE KEVLAR ESTE CÂȘTIGĂTORUL?</h3>
+
+                    <!-- Performance Bars -->
+                    <div class="performance-comparison-grid">
+                        <div class="perf-category">
+                            <div class="perf-label">REZISTENȚĂ LA TRACȚIUNE (MPa)</div>
+                            <div class="perf-bars">
+                                <div class="perf-bar-item kevlar-bar">
+                                    <span class="bar-label gold">KEVLAR</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill gold-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <span class="bar-value gold">3,620</span>
+                                </div>
+                                <div class="perf-bar-item steel-bar">
+                                    <span class="bar-label">OȚEL</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill steel-fill" style="width: 11%;"></div>
+                                    </div>
+                                    <span class="bar-value">400</span>
+                                </div>
+                                <div class="perf-bar-item aluminum-bar">
+                                    <span class="bar-label cyan">ALUMINIU</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill cyan-fill" style="width: 8%;"></div>
+                                    </div>
+                                    <span class="bar-value cyan">310</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="result-item">
-                            <div class="result-value military-text cyber-glow">5.4x</div>
-                            <div class="result-label">Mai ușor</div>
+
+                        <div class="perf-category">
+                            <div class="perf-label">RAPORT REZISTENȚĂ/GREUTATE</div>
+                            <div class="perf-bars">
+                                <div class="perf-bar-item kevlar-bar">
+                                    <span class="bar-label gold">KEVLAR</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill gold-fill" style="width: 100%;"></div>
+                                    </div>
+                                    <span class="bar-value gold">2,514</span>
+                                </div>
+                                <div class="perf-bar-item steel-bar">
+                                    <span class="bar-label">OȚEL</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill steel-fill" style="width: 2%;"></div>
+                                    </div>
+                                    <span class="bar-value">51</span>
+                                </div>
+                                <div class="perf-bar-item aluminum-bar">
+                                    <span class="bar-label cyan">ALUMINIU</span>
+                                    <div class="bar-container">
+                                        <div class="bar-fill cyan-fill" style="width: 4.5%;"></div>
+                                    </div>
+                                    <span class="bar-value cyan">115</span>
+                                </div>
+                            </div>
                         </div>
-                        <div class="result-item">
-                            <div class="result-value military-text gold-glow">∞</div>
-                            <div class="result-label">Flexibilitate</div>
+                    </div>
+
+                    <!-- Winner Stats -->
+                    <div class="winner-stats-grid">
+                        <div class="winner-stat gold-stat">
+                            <div class="winner-icon">⚡</div>
+                            <div class="winner-value gold">9x</div>
+                            <div class="winner-label">Mai Rezistent decât Oțelul</div>
                         </div>
-                        <div class="result-item">
-                            <div class="result-value military-text cyber-glow">0</div>
-                            <div class="result-label">Coroziune</div>
+                        <div class="winner-stat cyan-stat">
+                            <div class="winner-icon">🪶</div>
+                            <div class="winner-value cyan">5.4x</div>
+                            <div class="winner-label">Mai Ușor decât Oțelul</div>
                         </div>
+                        <div class="winner-stat gold-stat">
+                            <div class="winner-icon">🛡️</div>
+                            <div class="winner-value gold">11.7x</div>
+                            <div class="winner-label">Mai Puternic ca Aluminiul</div>
+                        </div>
+                        <div class="winner-stat cyan-stat">
+                            <div class="winner-icon">♾️</div>
+                            <div class="winner-value cyan">0%</div>
+                            <div class="winner-label">Coroziune (vs 100% oțel)</div>
+                        </div>
+                    </div>
+
+                    <!-- Detailed Analysis -->
+                    <div class="detailed-analysis-box">
+                        <h4 class="military-text gold">📊 ANALIZĂ ȘTIINȚIFICĂ DETALIATĂ</h4>
+                        <div class="analysis-grid">
+                            <div class="analysis-item">
+                                <span class="analysis-icon">🔬</span>
+                                <div class="analysis-content">
+                                    <strong class="gold">Structură Moleculară:</strong>
+                                    Kevlarul are lanțuri polimerice aliniate paralel, formând legături de hidrogen între
+                                    molecule. Această structură oferă o rezistență excepțională pe direcția fibrei.
+                                </div>
+                            </div>
+                            <div class="analysis-item">
+                                <span class="analysis-icon">⚖️</span>
+                                <div class="analysis-content">
+                                    <strong class="cyan">Densitate Minimă:</strong>
+                                    Cu doar 1.44 g/cm³, Kevlarul este de 5.5x mai ușor ca oțelul (7.85 g/cm³) și aproape
+                                    de 2x mai ușor decât aluminiul (2.70 g/cm³).
+                                </div>
+                            </div>
+                            <div class="analysis-item">
+                                <span class="analysis-icon">🔥</span>
+                                <div class="analysis-content">
+                                    <strong class="gold">Rezistență Termică:</strong>
+                                    Kevlarul își menține proprietățile până la 400°C, în timp ce aluminiul se topește la
+                                    660°C și oțelul la 1,500°C - dar Kevlarul nu transferă căldura!
+                                </div>
+                            </div>
+                            <div class="analysis-item">
+                                <span class="analysis-icon">💧</span>
+                                <div class="analysis-content">
+                                    <strong class="cyan">Rezistență la Coroziune:</strong>
+                                    Kevlarul NU RUGINEȘTE și nu corodează, spre deosebire de oțel (rugină) și aluminiu
+                                    (oxidare în medii saline).
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Verdict -->
+                    <div class="final-verdict">
+                        <div class="verdict-crown">👑</div>
+                        <h4 class="military-text verdict-title">VERDICT FINAL: KEVLAR ESTE SUPERIORUL ABSOLUT</h4>
+                        <p class="verdict-text">
+                            Combinând <strong class="gold">rezistența extraordinară</strong> cu <strong
+                                class="cyan">greutatea minimă</strong>,
+                            Kevlarul oferă cel mai bun raport performanță/greutate dintre toate materialele testate.
+                            Este alegerea #1 pentru veste antiglonț, echipamente militare și aplicații aerospațiale
+                            unde fiecare gram contează. <strong>Nici oțelul, nici aluminiul nu pot concura!</strong>
+                        </p>
                     </div>
                 </div>
 
                 <button id="close-comparison-btn" class="rgb-glow-btn secondary-btn">
                     <span class="btn-text">CLOSE COMPARISON</span>
+                    <span class="btn-glow"></span>
+                    <span class="btn-rgb-border"></span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Timeline Section -->
+        <section id="timeline-section" class="content-section timeline-section hidden">
+            <div class="section-content">
+                <div class="data-stream">[TIMELINE] // KEVLAR_DISCOVERY_HISTORY</div>
+                <h2 class="military-text section-title gold-glow">ISTORIA KEVLARULUI</h2>
+                <p class="section-subtitle">O descoperire revoluționară născută dintr-un „eșec" de laborator</p>
+
+                <!-- 3D Timeline Canvas -->
+                <div class="timeline-3d-container tactical-border">
+                    <canvas id="timeline-canvas"></canvas>
+                    <div class="timeline-hud">
+                        <span class="timeline-year-display" id="timeline-year-display">1965</span>
+                        <span class="timeline-label">DISCOVERY TIMELINE</span>
+                    </div>
+                </div>
+
+                <!-- Timeline Events -->
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+
+                    <div class="timeline-node" data-year="1965">
+                        <div class="timeline-year-badge military-text gold-glow">1965</div>
+                        <div class="timeline-content tactical-border glow-card">
+                            <h3 class="military-text gold">DESCOPERIREA ACCIDENTALĂ</h3>
+                            <p>Stephanie Kwolek, chimist la DuPont, lucra la găsirea unei fibre ușoare pentru anvelope.
+                                A obținut o soluție tulbure și apoasă pe care orice chimist ar fi aruncat-o. Ea a
+                                insistat să o testeze — rezultatul: o fibră de <strong>5 ori mai rezistentă decât
+                                    oțelul</strong>.</p>
+                            <div class="timeline-stats">
+                                <span class="stat-badge gold"><strong>5X</strong> vs oțel</span>
+                                <span class="stat-badge cyan">DuPont Labs</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-node" data-year="1971">
+                        <div class="timeline-year-badge military-text cyber-glow">1971</div>
+                        <div class="timeline-content tactical-border glow-card">
+                            <h3 class="military-text cyan">PRODUCȚIE COMERCIALĂ</h3>
+                            <p>După 6 ani de cercetare și dezvoltare, Kevlarul intră în producție comercială sub brevet
+                                DuPont. Primele aplicații: industria auto și echipamente industriale.</p>
+                            <div class="timeline-stats">
+                                <span class="stat-badge gold">Brevet DuPont</span>
+                                <span class="stat-badge cyan">Industrial use</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-node" data-year="1975">
+                        <div class="timeline-year-badge military-text gold-glow">1975</div>
+                        <div class="timeline-content tactical-border glow-card">
+                            <h3 class="military-text gold">VESTE ANTIGLONȚ</h3>
+                            <p>Prima aplicație în echipamente de protecție balistică. Vestele antiglonț din Kevlar încep
+                                să salveze viețile polițiștilor și soldaților din întreaga lume.</p>
+                            <div class="timeline-stats">
+                                <span class="stat-badge gold">NIJ Level IIIA</span>
+                                <span class="stat-badge cyan">1000+ vieți salvate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-node" data-year="1988">
+                        <div class="timeline-year-badge military-text cyber-glow">1988</div>
+                        <div class="timeline-content tactical-border glow-card">
+                            <h3 class="military-text cyan">APLICAȚII NASA</h3>
+                            <p>NASA adoptă Kevlarul pentru protecția echipajelor spațiale împotriva micrometoritelor și
+                                debris-ului orbital. Materialul devine standard pentru misiunile ISS.</p>
+                            <div class="timeline-stats">
+                                <span class="stat-badge gold">ISS Shield</span>
+                                <span class="stat-badge cyan">28,000 km/h protecție</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-node" data-year="2024">
+                        <div class="timeline-year-badge military-text gold-glow">PREZENT</div>
+                        <div class="timeline-content tactical-border glow-card">
+                            <h3 class="military-text gold">APLICAȚII UNIVERSALE</h3>
+                            <p>Kevlarul se găsește astăzi în: veste antiglonț, căști balistice, anvelope, parașute Mars
+                                rovers, echipament sportiv, costume pompieri, odgoane marine și multe altele.</p>
+                            <div class="timeline-stats">
+                                <span class="stat-badge gold">17 Brevete</span>
+                                <span class="stat-badge cyan">Milioane salvate</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical Documentation Grid -->
+                <div class="data-stream" style="margin-top: 4rem;">[TECHNICAL_DOCS] // MOLECULAR_PROPERTIES</div>
+                <h3 class="military-text section-title cyber-glow" style="font-size: 2rem; margin: 2rem 0;">DOCUMENTAȚIE
+                    TEHNICĂ</h3>
+
+                <div class="tech-doc-grid">
+                    <div class="tech-doc-card tactical-border glow-card">
+                        <div class="doc-icon">🧪</div>
+                        <h4 class="military-text gold">CONTEXTUL DESCOPERIRII</h4>
+                        <p>În 1965, criza anticipată a combustibilului forța industria auto să caute soluții pentru
+                            mașini mai ușoare. DuPont căuta o fibră sintetică care să înlocuiască sârma de oțel din
+                            anvelope — o mașină mai ușoară consumă mai puțină benzină.</p>
+                    </div>
+
+                    <div class="tech-doc-card tactical-border glow-card">
+                        <div class="doc-icon">⚛️</div>
+                        <h4 class="military-text cyan">STRUCTURA MOLECULARĂ</h4>
+                        <p>Kevlarul (poli-para-fenilen tereftalamidă) are molecule aliniate paralel, strâns legate una
+                            de alta, orientate în aceeași direcție. Această organizare îi conferă rezistență
+                            extraordinară la tracțiune.</p>
+                    </div>
+
+                    <div class="tech-doc-card tactical-border glow-card">
+                        <div class="doc-icon">💥</div>
+                        <h4 class="military-text gold">CUM FUNCȚIONEAZĂ</h4>
+                        <p>Principiul disipării energiei cinetice: fibra nu se rupe, ci se întinde, preluând șocul și
+                            distribuindu-l pe o suprafață largă. Țesătura din straturi suprapuse oprește obiectele prin
+                            flexibilitate și rezistență la rupere.</p>
+                    </div>
+
+                    <div class="tech-doc-card tactical-border glow-card">
+                        <div class="doc-icon">🔥</div>
+                        <h4 class="military-text cyan">REZISTENȚĂ TERMICĂ</h4>
+                        <p>Kevlarul nu se topește și nu arde ușor — rezistă la temperaturi de peste
+                            <strong>400°C</strong> fără a se descompune. Ideal pentru costume pompieri și mănuși de
+                            protecție în bucătării industriale.
+                        </p>
+                    </div>
+
+                    <div class="tech-doc-card tactical-border glow-card">
+                        <div class="doc-icon">⚠️</div>
+                        <h4 class="military-text gold">LIMITĂRI</h4>
+                        <p>Fibrele se degradează la razele UV și absorb umiditatea, slăbindu-le structura. De aceea,
+                            echipamentele de protecție sigilează straturile Kevlar într-un material impermeabil și opac.
+                        </p>
+                    </div>
+
+                    <div class="tech-doc-card tactical-border glow-card">
+                        <div class="doc-icon">🎯</div>
+                        <h4 class="military-text cyan">APLICAȚII</h4>
+                        <p>Veste antiglonț, căști balistice, blindaje vehicule, parașute Mars rovers, echipament sportiv
+                            (schiuri, rachete tenis), anvelope rezistente la pană, odgoane platforme marine.</p>
+                    </div>
+                </div>
+
+                <!-- Spider Silk Comparison -->
+                <div class="silk-comparison-section">
+                    <div class="data-stream" style="margin-top: 4rem;">[COMPARISON] // KEVLAR_VS_SPIDER_SILK</div>
+                    <h3 class="military-text section-title rgb-text" style="font-size: 2rem; margin: 2rem 0;">KEVLAR VS
+                        MĂTASE DE PĂIANJEN</h3>
+
+                    <div class="myth-buster tactical-border glow-card">
+                        <div class="myth-header">
+                            <span class="myth-icon">🕷️</span>
+                            <h4 class="military-text gold">MIT DEMONTAT</h4>
+                        </div>
+                        <p class="myth-text">Kevlarul <strong>NU</strong> a fost inspirat direct de păianjeni! Stephanie
+                            Kwolek lucra pur chimic, la polimeri aromatici în laborator. Descoperirea a venit din
+                            structura moleculară, nu din biomimetică. Podobitatea este o coincidență a fizicii
+                            materialelor.</p>
+                    </div>
+
+                    <div class="silk-compare-grid">
+                        <div class="compare-column tactical-border">
+                            <h4 class="military-text gold">🧬 MĂTASE PĂIANJEN</h4>
+                            <ul>
+                                <li><span class="prop">Rezistență:</span> <span class="val cyan">Foarte mare</span></li>
+                                <li><span class="prop">Densitate:</span> <span class="val cyan">Foarte mică</span></li>
+                                <li><span class="prop">Tip:</span> <span class="val">Natural, elastic</span></li>
+                                <li><span class="prop">Producție:</span> <span class="val">Biologică</span></li>
+                            </ul>
+                        </div>
+                        <div class="compare-vs">
+                            <span class="military-text rgb-text">VS</span>
+                        </div>
+                        <div class="compare-column tactical-border">
+                            <h4 class="military-text cyan">🛡️ KEVLAR</h4>
+                            <ul>
+                                <li><span class="prop">Rezistență:</span> <span class="val gold">Și mai mare</span></li>
+                                <li><span class="prop">Densitate:</span> <span class="val gold">Mică</span></li>
+                                <li><span class="prop">Tip:</span> <span class="val">Sintetic, rigid</span></li>
+                                <li><span class="prop">Producție:</span> <span class="val">Chimică</span></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="similarity-note tactical-border">
+                        <p><strong class="gold">De ce seamănă totuși?</strong> Ambele au lanțuri moleculare aliniate,
+                            legături foarte puternice pe direcția fibrei și distribuie forța de-a lungul firului. Este
+                            fizica materialelor, nu inspirație din natură! 🧠</p>
+                    </div>
+                </div>
+
+                <!-- Stephanie Kwolek Bio -->
+                <div class="bio-section">
+                    <div class="data-stream" style="margin-top: 4rem;">[BIOGRAPHY] // INVENTOR_PROFILE</div>
+                    <div class="bio-card tactical-border glow-card">
+                        <div class="bio-header">
+                            <div class="bio-avatar">👩‍🔬</div>
+                            <div class="bio-info">
+                                <h3 class="military-text gold-glow">STEPHANIE KWOLEK</h3>
+                                <p class="bio-subtitle">1923 – 2014 | Inventatoarea Kevlarului</p>
+                            </div>
+                        </div>
+                        <div class="bio-content">
+                            <p>Stephanie Kwolek a devenit una dintre cele mai respectate figuri din istoria chimiei
+                                moderne. Numele ei apare pe <strong>17 brevete de invenție</strong>, iar pentru munca sa
+                                de pionierat a primit <strong>Medalia Națională pentru Tehnologie</strong>.</p>
+                            <p class="bio-quote">"Satisfacția de a ști că am contribuit la salvarea atâtor oameni este
+                                cea mai mare recompensă posibilă."</p>
+                            <div class="bio-stats">
+                                <div class="bio-stat">
+                                    <span class="bio-stat-value gold">17</span>
+                                    <span class="bio-stat-label">Brevete</span>
+                                </div>
+                                <div class="bio-stat">
+                                    <span class="bio-stat-value cyan">40+</span>
+                                    <span class="bio-stat-label">Ani la DuPont</span>
+                                </div>
+                                <div class="bio-stat">
+                                    <span class="bio-stat-value gold">∞</span>
+                                    <span class="bio-stat-label">Vieți salvate</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button id="close-timeline-btn" class="rgb-glow-btn secondary-btn" style="margin-top: 3rem;">
+                    <span class="btn-text">ÎNCHIDE TIMELINE</span>
                     <span class="btn-glow"></span>
                     <span class="btn-rgb-border"></span>
                 </button>
@@ -730,72 +1053,15 @@
             </div>
         </section>
 
-        <!-- Performance Metrics -->
-        <section class="content-section performance-section">
-            <div class="section-content">
-                <div class="data-stream">[PERFORMANCE] // 3D_ENGINE_METRICS</div>
-                <h2 class="military-text section-title cyber-glow">METRICI 3D ENGINE</h2>
 
-                <div class="performance-grid">
-                    <div class="perf-card tactical-border glow-card">
-                        <div class="perf-icon">⚡</div>
-                        <div class="perf-value military-text gold-glow" id="perf-particles">2000</div>
-                        <div class="perf-label">PARTICULE ACTIVE</div>
-                        <div class="perf-bar">
-                            <div class="perf-fill" style="--fill: 100%"></div>
-                        </div>
-                    </div>
-                    <div class="perf-card tactical-border glow-card">
-                        <div class="perf-icon">🔥</div>
-                        <div class="perf-value military-text cyber-glow" id="perf-fibers">100</div>
-                        <div class="perf-label">FIBRE 3D</div>
-                        <div class="perf-bar">
-                            <div class="perf-fill" style="--fill: 95%"></div>
-                        </div>
-                    </div>
-                    <div class="perf-card tactical-border glow-card">
-                        <div class="perf-icon">🎯</div>
-                        <div class="perf-value military-text gold-glow" id="perf-fps">60</div>
-                        <div class="perf-label">FPS TARGET</div>
-                        <div class="perf-bar">
-                            <div class="perf-fill" style="--fill: 100%"></div>
-                        </div>
-                    </div>
-                    <div class="perf-card tactical-border glow-card">
-                        <div class="perf-icon">💎</div>
-                        <div class="perf-value military-text cyber-glow">5</div>
-                        <div class="perf-label">ARMOR LAYERS</div>
-                        <div class="perf-bar">
-                            <div class="perf-fill" style="--fill: 100%"></div>
-                        </div>
-                    </div>
-                    <div class="perf-card tactical-border glow-card">
-                        <div class="perf-icon">🌐</div>
-                        <div class="perf-value military-text gold-glow">21</div>
-                        <div class="perf-label">WEB LINES</div>
-                        <div class="perf-bar">
-                            <div class="perf-fill" style="--fill: 98%"></div>
-                        </div>
-                    </div>
-                    <div class="perf-card tactical-border glow-card">
-                        <div class="perf-icon">💡</div>
-                        <div class="perf-value military-text cyber-glow">4</div>
-                        <div class="perf-label">LIGHT SOURCES</div>
-                        <div class="perf-bar">
-                            <div class="perf-fill" style="--fill: 90%"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
 
         <!-- Final CTA -->
         <section class="content-section cta-section">
             <div class="section-content">
-                <div class="data-stream">[FINAL_PROTOCOL] // NASA_ELITE_ACCESS</div>
+                <div class="data-stream">[FINAL_PROTOCOL] // ELITE_ACCESS</div>
                 <h2 class="military-text cta-title glitch gold-glow">EXPERIENȚA COMPLETĂ 3D</h2>
                 <p class="cta-description">Nu mai citești despre tehnologie. <strong>O experimentezi în 3D
-                        real-time</strong>. Această prezentare folosește aceeași tehnologie ca simulările NASA.</p>
+                        real-time</strong>. Această prezentare folosește tehnologie de ultimă generație.</p>
 
                 <div class="button-group">
                     <button id="cta-armor-btn" class="rgb-glow-btn primary-btn large">
@@ -871,7 +1137,7 @@
             <div class="footer-content">
                 <div class="footer-logo">
                     <div class="military-text footer-title gold">KEVLAR 3D SUPREMACY</div>
-                    <div class="footer-badge">NASA APPROVED TECHNOLOGY</div>
+                    <div class="footer-badge">ELITE DEFENSE TECHNOLOGY</div>
                 </div>
                 <p class="footer-subtitle">Powered by Three.js R128 // WebGL 2.0 // GPU-Accelerated Rendering</p>
                 <div class="footer-tech">
