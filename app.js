@@ -1,10 +1,10 @@
 /**
- * KEVLAR 3D SUPREMACY - NASA ELITE EDITION
+ * KEVLAR 3D SUPREMACY - ELITE EDITION
  * ============================================
  * Features:
  * - Full 3D background with spider web & armor
  * - RGB glowing buttons with spider web click effects
- * - Working free gesture mode with full orbit controls
+ * - 360° rotatable 3D background (drag with mouse)
  * - 3D camera model in dynamics panel
  * - Ultra-premium animations
  */
@@ -18,6 +18,7 @@ const state = {
     armorOpen: false,
     gestureMode: false,
     comparisonOpen: false,
+    timelineOpen: false,
     mousePos: { x: 0, y: 0 },
     fps: 60,
     lastFrameTime: performance.now(),
@@ -81,6 +82,11 @@ function initElements() {
     elements.steelCanvas = document.getElementById('steel-canvas');
     elements.cameraModelCanvas = document.getElementById('camera-3d-model');
     elements.spiderEffectContainer = document.getElementById('spider-effect-container');
+    // Timeline elements
+    elements.timelineBtn = document.getElementById('timeline-btn');
+    elements.timelineSection = document.getElementById('timeline-section');
+    elements.closeTimelineBtn = document.getElementById('close-timeline-btn');
+    elements.timelineCanvas = document.getElementById('timeline-canvas');
 }
 
 // ============================================
@@ -134,6 +140,15 @@ function initEventListeners() {
     if (elements.fullscreenBtn) {
         elements.fullscreenBtn.addEventListener('click', toggleFullscreen);
     }
+
+    // Timeline button events
+    if (elements.timelineBtn) {
+        elements.timelineBtn.addEventListener('click', toggleTimeline);
+    }
+
+    if (elements.closeTimelineBtn) {
+        elements.closeTimelineBtn.addEventListener('click', toggleTimeline);
+    }
 }
 
 // ============================================
@@ -165,18 +180,16 @@ function createSpiderWebEffect(x, y) {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('viewBox', '0 0 200 200');
 
-    // Add RGB gradient
+    // Add Cosmic gradient
     const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
     const gradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
     gradient.setAttribute('id', 'rgbGradient');
     gradient.innerHTML = `
-        <stop offset="0%" style="stop-color:#ff0000"/>
-        <stop offset="17%" style="stop-color:#ff7f00"/>
-        <stop offset="33%" style="stop-color:#ffff00"/>
-        <stop offset="50%" style="stop-color:#00ff00"/>
-        <stop offset="67%" style="stop-color:#00ffff"/>
-        <stop offset="83%" style="stop-color:#0000ff"/>
-        <stop offset="100%" style="stop-color:#8b00ff"/>
+        <stop offset="0%" style="stop-color:#7b68ee"/>
+        <stop offset="25%" style="stop-color:#e8c547"/>
+        <stop offset="50%" style="stop-color:#64d2ff"/>
+        <stop offset="75%" style="stop-color:#9d7cbf"/>
+        <stop offset="100%" style="stop-color:#7b68ee"/>
     `;
     defs.appendChild(gradient);
     svg.appendChild(defs);
@@ -218,7 +231,7 @@ function createParticleExplosion(button) {
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    const colors = ['#ff0000', '#ff7f00', '#ffff00', '#00ff00', '#00ffff', '#0000ff', '#8b00ff'];
+    const colors = ['#7b68ee', '#e8c547', '#64d2ff', '#9d7cbf', '#7b68ee'];
 
     for (let i = 0; i < 30; i++) {
         const particle = document.createElement('span');
@@ -485,6 +498,222 @@ function toggleComparison() {
 }
 
 // ============================================
+// Timeline Toggle
+// ============================================
+let timelineScene, timelineCamera, timelineRenderer;
+let timelineGroup, timelineYearMarkers = [];
+
+function toggleTimeline() {
+    state.timelineOpen = !state.timelineOpen;
+
+    if (state.timelineOpen) {
+        elements.timelineSection.classList.remove('hidden');
+        initTimelineScene();
+        createSpiderWebEffect(window.innerWidth / 2, window.innerHeight / 2);
+
+        // Smooth scroll to timeline
+        setTimeout(() => {
+            elements.timelineSection.scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+    } else {
+        elements.timelineSection.classList.add('hidden');
+    }
+}
+
+// ============================================
+// 3D Timeline Scene
+// ============================================
+function initTimelineScene() {
+    if (timelineScene) return; // Already initialized
+
+    const THREE = window.THREE;
+    const canvas = elements.timelineCanvas;
+    if (!canvas) return;
+
+    // Scene
+    timelineScene = new THREE.Scene();
+    timelineScene.background = new THREE.Color(0x050505);
+
+    // Camera
+    timelineCamera = new THREE.PerspectiveCamera(60, canvas.offsetWidth / 300, 0.1, 1000);
+    timelineCamera.position.set(0, 5, 25);
+    timelineCamera.lookAt(0, 0, 0);
+
+    // Renderer
+    timelineRenderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+    timelineRenderer.setSize(canvas.offsetWidth, 300);
+    timelineRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0xffd700, 0.4);
+    timelineScene.add(ambientLight);
+
+    const pointLight1 = new THREE.PointLight(0xffd700, 2, 100);
+    pointLight1.position.set(20, 10, 10);
+    timelineScene.add(pointLight1);
+
+    const pointLight2 = new THREE.PointLight(0x00ffcc, 1.5, 100);
+    pointLight2.position.set(-20, -10, 10);
+    timelineScene.add(pointLight2);
+
+    // Create timeline group
+    timelineGroup = new THREE.Group();
+
+    // Timeline years
+    const years = [1965, 1971, 1975, 1988, 2024];
+    const yearPositions = [-12, -6, 0, 6, 12];
+
+    // Create year markers (spheres with rings)
+    years.forEach((year, i) => {
+        const markerGroup = new THREE.Group();
+
+        // Main sphere
+        const sphereGeometry = new THREE.SphereGeometry(0.8, 32, 32);
+        const sphereMaterial = new THREE.MeshPhysicalMaterial({
+            color: i % 2 === 0 ? 0xffd700 : 0x00ffcc,
+            metalness: 0.9,
+            roughness: 0.1,
+            emissive: i % 2 === 0 ? 0xffd700 : 0x00ffcc,
+            emissiveIntensity: 0.5
+        });
+        const sphere = new THREE.Mesh(sphereGeometry, sphereMaterial);
+        markerGroup.add(sphere);
+
+        // Orbital ring around sphere
+        const ringGeometry = new THREE.TorusGeometry(1.2, 0.05, 16, 50);
+        const ringMaterial = new THREE.MeshPhysicalMaterial({
+            color: i % 2 === 0 ? 0x00ffcc : 0xffd700,
+            metalness: 1,
+            roughness: 0,
+            transparent: true,
+            opacity: 0.7,
+            emissive: i % 2 === 0 ? 0x00ffcc : 0xffd700,
+            emissiveIntensity: 0.3
+        });
+        const ring = new THREE.Mesh(ringGeometry, ringMaterial);
+        ring.rotation.x = Math.PI / 2;
+        markerGroup.add(ring);
+
+        // Position marker
+        markerGroup.position.x = yearPositions[i];
+        markerGroup.userData = { year, baseY: 0, index: i, ring };
+
+        timelineGroup.add(markerGroup);
+        timelineYearMarkers.push(markerGroup);
+    });
+
+    // Connecting line between markers
+    const lineGeometry = new THREE.BufferGeometry();
+    const linePositions = new Float32Array([
+        yearPositions[0], 0, 0,
+        yearPositions[yearPositions.length - 1], 0, 0
+    ]);
+    lineGeometry.setAttribute('position', new THREE.BufferAttribute(linePositions, 3));
+    const lineMaterial = new THREE.LineBasicMaterial({
+        color: 0xffd700,
+        transparent: true,
+        opacity: 0.6
+    });
+    const line = new THREE.Line(lineGeometry, lineMaterial);
+    timelineGroup.add(line);
+
+    // Add decorative outer rings
+    for (let i = 0; i < 3; i++) {
+        const bigRingGeometry = new THREE.TorusGeometry(15 + i * 3, 0.03, 16, 100);
+        const bigRingMaterial = new THREE.MeshPhysicalMaterial({
+            color: new THREE.Color().setHSL(i * 0.3, 1, 0.5),
+            metalness: 1,
+            roughness: 0,
+            transparent: true,
+            opacity: 0.3,
+            emissive: new THREE.Color().setHSL(i * 0.3, 1, 0.5),
+            emissiveIntensity: 0.4
+        });
+        const bigRing = new THREE.Mesh(bigRingGeometry, bigRingMaterial);
+        bigRing.rotation.x = Math.PI / 2 + (i * 0.15);
+        bigRing.rotation.z = i * 0.2;
+        bigRing.userData = { rotationSpeed: 0.002 * (i + 1) };
+        timelineGroup.add(bigRing);
+    }
+
+    // Add particles
+    const particleCount = 500;
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlePositions = new Float32Array(particleCount * 3);
+    const particleColors = new Float32Array(particleCount * 3);
+
+    for (let i = 0; i < particleCount; i++) {
+        particlePositions[i * 3] = (Math.random() - 0.5) * 50;
+        particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 30;
+        particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 30;
+
+        const color = Math.random() > 0.5 ? new THREE.Color(0xffd700) : new THREE.Color(0x00ffcc);
+        particleColors[i * 3] = color.r;
+        particleColors[i * 3 + 1] = color.g;
+        particleColors[i * 3 + 2] = color.b;
+    }
+
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+    particlesGeometry.setAttribute('color', new THREE.BufferAttribute(particleColors, 3));
+
+    const particleMaterial = new THREE.PointsMaterial({
+        size: 0.1,
+        transparent: true,
+        opacity: 0.6,
+        vertexColors: true,
+        blending: THREE.AdditiveBlending
+    });
+
+    const timelineParticles = new THREE.Points(particlesGeometry, particleMaterial);
+    timelineGroup.add(timelineParticles);
+
+    timelineScene.add(timelineGroup);
+
+    // Animation loop
+    function animateTimeline() {
+        if (!state.timelineOpen) return;
+        requestAnimationFrame(animateTimeline);
+
+        const time = performance.now() * 0.001;
+
+        // Animate year markers
+        timelineYearMarkers.forEach((marker, i) => {
+            marker.position.y = Math.sin(time * 1.5 + i * 0.5) * 0.5;
+            marker.rotation.y += 0.01;
+            if (marker.userData.ring) {
+                marker.userData.ring.rotation.z += 0.02;
+            }
+            // Pulsing glow
+            const sphere = marker.children[0];
+            if (sphere && sphere.material) {
+                sphere.material.emissiveIntensity = 0.5 + Math.sin(time * 3 + i) * 0.2;
+            }
+        });
+
+        // Animate outer rings
+        timelineGroup.children.forEach(child => {
+            if (child.userData && child.userData.rotationSpeed) {
+                child.rotation.z += child.userData.rotationSpeed;
+            }
+        });
+
+        // Rotate entire group slightly
+        timelineGroup.rotation.y = Math.sin(time * 0.2) * 0.1;
+
+        // Update year display
+        const yearDisplay = document.getElementById('timeline-year-display');
+        if (yearDisplay) {
+            const currentYear = 1965 + Math.floor((Math.sin(time * 0.5) + 1) * 0.5 * 59);
+            yearDisplay.textContent = currentYear;
+        }
+
+        timelineRenderer.render(timelineScene, timelineCamera);
+    }
+
+    animateTimeline();
+}
+
+// ============================================
 // Fullscreen Toggle
 // ============================================
 function toggleFullscreen() {
@@ -525,21 +754,28 @@ function initMainScene() {
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setClearColor(0x000000, 0);
 
-    // OrbitControls
+    // OrbitControls - DISABLED by default, enabled via FREE GESTURE button
     controls = new THREE.OrbitControls(camera, renderer.domElement);
-    controls.enabled = false;
+    controls.enabled = false; // Disabled until FREE GESTURE activated
     controls.enableDamping = true;
     controls.dampingFactor = 0.05;
     controls.minDistance = 5;
     controls.maxDistance = 100;
     controls.enablePan = true;
-    controls.autoRotate = false;
-    controls.autoRotateSpeed = 0.5;
+    controls.autoRotate = true; // Auto rotate for dynamic effect
+    controls.autoRotateSpeed = 0.3;
+    // Use RIGHT mouse button for rotation (more intuitive)
+    controls.mouseButtons = {
+        LEFT: THREE.MOUSE.PAN,
+        MIDDLE: THREE.MOUSE.DOLLY,
+        RIGHT: THREE.MOUSE.ROTATE
+    };
 
     // Lighting Setup
     setupLighting(scene, THREE);
 
     // Create 3D Elements
+    createCentralHexagonPortal(scene, THREE); // NEW: Central glowing hexagon portal
     createKevlarFibers(scene, THREE);
     createRealisticSpiderWeb(scene, THREE);
     createRealisticArmor(scene, THREE);
@@ -566,7 +802,7 @@ function setupLighting(targetScene, THREE) {
     pointLight2.position.set(-15, -15, 15);
     targetScene.add(pointLight2);
 
-    const pointLight3 = new THREE.PointLight(0xff00ff, 1, 100);
+    const pointLight3 = new THREE.PointLight(0x7b68ee, 0.8, 100);
     pointLight3.position.set(0, 0, -20);
     targetScene.add(pointLight3);
 
@@ -575,6 +811,152 @@ function setupLighting(targetScene, THREE) {
     spotLight.angle = Math.PI / 5;
     spotLight.penumbra = 0.5;
     targetScene.add(spotLight);
+}
+
+// ============================================
+// Central Hexagon Portal - Futuristic Background
+// ============================================
+let hexagonPortalGroup;
+
+function createCentralHexagonPortal(targetScene, THREE) {
+    hexagonPortalGroup = new THREE.Group();
+
+    // ===== KEVLAR WOVEN FIBER BACKGROUND =====
+    // Create realistic golden aramid fiber weave pattern
+
+    const kevlarGold = 0xe8c547;
+    const kevlarDarkGold = 0xc9a227;
+
+    // Kevlar fiber material - shiny metallic aramid look
+    const fiberMaterial = new THREE.MeshPhysicalMaterial({
+        color: kevlarGold,
+        metalness: 0.85,
+        roughness: 0.15,
+        transparent: true,
+        opacity: 0.95,
+        emissive: kevlarGold,
+        emissiveIntensity: 0.15
+    });
+
+    const fiberDarkMaterial = new THREE.MeshPhysicalMaterial({
+        color: kevlarDarkGold,
+        metalness: 0.9,
+        roughness: 0.2,
+        transparent: true,
+        opacity: 0.9,
+        emissive: kevlarDarkGold,
+        emissiveIntensity: 0.1
+    });
+
+    // Create woven pattern - horizontal fibers
+    const fiberWidth = 0.3;
+    const fiberSpacing = 0.8;
+    const gridSize = 25;
+
+    for (let i = -gridSize; i <= gridSize; i++) {
+        // Horizontal fibers
+        const hGeometry = new THREE.BoxGeometry(gridSize * 2 * fiberSpacing, fiberWidth * 0.5, fiberWidth);
+        const hFiber = new THREE.Mesh(hGeometry, i % 2 === 0 ? fiberMaterial.clone() : fiberDarkMaterial.clone());
+        hFiber.position.y = i * fiberSpacing;
+        hFiber.position.z = (i % 2) * fiberWidth * 0.3; // Weave offset
+        hexagonPortalGroup.add(hFiber);
+
+        // Vertical fibers (weaving over/under)
+        const vGeometry = new THREE.BoxGeometry(fiberWidth, fiberSpacing * 2, fiberWidth * 0.5);
+        for (let j = -gridSize; j <= gridSize; j++) {
+            const vFiber = new THREE.Mesh(vGeometry, j % 2 === 0 ? fiberDarkMaterial.clone() : fiberMaterial.clone());
+            vFiber.position.x = j * fiberSpacing;
+            vFiber.position.y = i * fiberSpacing + fiberSpacing;
+            vFiber.position.z = ((i + j) % 2) * fiberWidth * 0.3 - fiberWidth * 0.15;
+            hexagonPortalGroup.add(vFiber);
+        }
+    }
+
+    // Add glowing edge frame
+    const frameMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0x00ffff,
+        metalness: 1,
+        roughness: 0,
+        transparent: true,
+        opacity: 0.8,
+        emissive: 0x00ffff,
+        emissiveIntensity: 0.6
+    });
+
+    // Central glowing hexagon overlay
+    const hexShape = new THREE.Shape();
+    const hexRadius = 8;
+    for (let i = 0; i < 6; i++) {
+        const angle = (i / 6) * Math.PI * 2 - Math.PI / 6;
+        const x = Math.cos(angle) * hexRadius;
+        const y = Math.sin(angle) * hexRadius;
+        if (i === 0) hexShape.moveTo(x, y);
+        else hexShape.lineTo(x, y);
+    }
+    hexShape.closePath();
+
+    // Glowing hexagon outline
+    for (let ring = 0; ring < 3; ring++) {
+        const ringShape = new THREE.Shape();
+        const ringRadius = hexRadius + ring * 3;
+        for (let i = 0; i < 6; i++) {
+            const angle = (i / 6) * Math.PI * 2 - Math.PI / 6;
+            const x = Math.cos(angle) * ringRadius;
+            const y = Math.sin(angle) * ringRadius;
+            if (i === 0) ringShape.moveTo(x, y);
+            else ringShape.lineTo(x, y);
+        }
+
+        const ringGeometry = new THREE.BufferGeometry().setFromPoints(ringShape.getPoints());
+        const ringColor = ring === 0 ? 0x00ffff : (ring === 1 ? 0xe8c547 : 0x7b68ee);
+        const ringMaterial = new THREE.LineBasicMaterial({
+            color: ringColor,
+            transparent: true,
+            opacity: 0.7 - ring * 0.2
+        });
+        const ringMesh = new THREE.LineLoop(ringGeometry, ringMaterial);
+        ringMesh.position.z = 5;
+        hexagonPortalGroup.add(ringMesh);
+    }
+
+    // Central glowing orb
+    const orbGeometry = new THREE.SphereGeometry(2, 32, 32);
+    const orbMaterial = new THREE.MeshPhysicalMaterial({
+        color: 0xffffff,
+        transparent: true,
+        opacity: 0.8,
+        emissive: 0xe8c547,
+        emissiveIntensity: 0.6,
+        metalness: 0.3,
+        roughness: 0.1
+    });
+    const orb = new THREE.Mesh(orbGeometry, orbMaterial);
+    orb.position.z = 8;
+    hexagonPortalGroup.add(orb);
+
+    // Orbital rings around orb
+    for (let i = 0; i < 3; i++) {
+        const torusGeometry = new THREE.TorusGeometry(3 + i * 1.2, 0.05, 16, 100);
+        const torusColor = i === 0 ? 0x00ffff : (i === 1 ? 0xe8c547 : 0xff6600);
+        const torusMaterial = new THREE.MeshPhysicalMaterial({
+            color: torusColor,
+            transparent: true,
+            opacity: 0.7,
+            emissive: torusColor,
+            emissiveIntensity: 0.5
+        });
+        const torus = new THREE.Mesh(torusGeometry, torusMaterial);
+        torus.position.z = 8;
+        torus.rotation.x = Math.PI / 2 + i * 0.3;
+        torus.rotation.z = i * 0.5;
+        torus.userData = { rotationSpeed: 0.01 * (i + 1) };
+        hexagonPortalGroup.add(torus);
+    }
+
+    // Position in background
+    hexagonPortalGroup.position.z = -25;
+    hexagonPortalGroup.rotation.x = 0.1;
+    targetScene.add(hexagonPortalGroup);
 }
 
 // ============================================
@@ -612,13 +994,13 @@ function createKevlarFibers(targetScene, THREE) {
 
     // Main fiber material with realistic properties
     const fiberMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xffd700,
+        color: 0xe8c547,
         metalness: 0.9,
         roughness: 0.1,
         transparent: true,
         opacity: 0.85,
-        emissive: 0xffd700,
-        emissiveIntensity: 0.3
+        emissive: 0xe8c547,
+        emissiveIntensity: 0.25
     });
 
     // Create double helix structure (like DNA but for Kevlar)
@@ -664,13 +1046,13 @@ function createKevlarFibers(targetScene, THREE) {
 
     // Add connecting cross-fibers (hydrogen bonds visualization)
     const bondMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x00ffcc,
+        color: 0x64d2ff,
         metalness: 0.5,
         roughness: 0.3,
         transparent: true,
-        opacity: 0.4,
-        emissive: 0x00ffcc,
-        emissiveIntensity: 0.2
+        opacity: 0.35,
+        emissive: 0x64d2ff,
+        emissiveIntensity: 0.15
     });
 
     for (let i = 0; i < 25; i++) {
@@ -696,13 +1078,13 @@ function createRealisticSpiderWeb(targetScene, THREE) {
     webGroup = new THREE.Group();
 
     const webMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0x00ffcc,
+        color: 0x64d2ff,
         metalness: 0.8,
         roughness: 0.2,
         transparent: true,
-        opacity: 0.7,
-        emissive: 0x00ffcc,
-        emissiveIntensity: 0.3,
+        opacity: 0.6,
+        emissive: 0x64d2ff,
+        emissiveIntensity: 0.2,
         side: THREE.DoubleSide
     });
 
@@ -734,9 +1116,9 @@ function createRealisticSpiderWeb(targetScene, THREE) {
     // Add glowing center node
     const centerGeometry = new THREE.SphereGeometry(0.5, 32, 32);
     const centerMaterial = new THREE.MeshPhysicalMaterial({
-        color: 0xffd700,
-        emissive: 0xffd700,
-        emissiveIntensity: 0.8,
+        color: 0xe8c547,
+        emissive: 0xe8c547,
+        emissiveIntensity: 0.6,
         metalness: 1,
         roughness: 0
     });
@@ -800,9 +1182,9 @@ function createRealisticArmor(targetScene, THREE) {
         // Add glowing edges
         const edges = new THREE.EdgesGeometry(geometry);
         const edgeMaterial = new THREE.LineBasicMaterial({
-            color: layer % 2 === 0 ? 0xffd700 : 0x00ffcc,
+            color: layer % 2 === 0 ? 0xe8c547 : 0x64d2ff,
             transparent: true,
-            opacity: 0.95
+            opacity: 0.8
         });
         const edgeLine = new THREE.LineSegments(edges, edgeMaterial);
         plate.add(edgeLine);
@@ -860,10 +1242,10 @@ function createParticleSystem(targetScene, THREE) {
     const particleVelocities = [];
 
     const colors = [
-        new THREE.Color(0xffd700),
-        new THREE.Color(0x00ffcc),
-        new THREE.Color(0xff00ff),
-        new THREE.Color(0x00ff00)
+        new THREE.Color(0xe8c547),
+        new THREE.Color(0x64d2ff),
+        new THREE.Color(0x7b68ee),
+        new THREE.Color(0x9d7cbf)
     ];
 
     for (let i = 0; i < particleCount; i++) {
