@@ -2010,10 +2010,10 @@ function launchBallisticTest() {
         }
 
         // status text on canvas
-        let kLabel = '→ GLONȚ ÎN TRAIECTORIE';
+        let kLabel = '→ BULLET IN TRAJECTORY';
         if (kHit && kState.impactAge < 0.4) kLabel = '⚡ IMPACT DETECTAT';
         else if (kHit && !kState.bulletDone) kLabel = '〜 DISIPARE ENERGIE';
-        else if (kState.bulletDone) kLabel = '✓ AMENINȚARE OPRITĂ';
+        else if (kState.bulletDone) kLabel = '✓ THREAT STOPPED';
         bKevlarCtx.font = '9px "Share Tech Mono", monospace';
         bKevlarCtx.fillStyle = kState.bulletDone ? '#00ffcc' : '#ffd700';
         bKevlarCtx.textAlign = 'center';
@@ -2057,10 +2057,10 @@ function launchBallisticTest() {
             }
         }
 
-        let sLabel = '→ GLONȚ ÎN TRAIECTORIE';
-        if (sHit && sState.holeR < 15) sLabel = '💥 PERFORARE ÎN CURS';
-        else if (sHit && !sState.bulletDone) sLabel = '☠ OȚELUL CEDAT';
-        else if (sState.bulletDone) sLabel = '☠ PENETRARE COMPLETĂ';
+        let sLabel = '→ BULLET IN TRAJECTORY';
+        if (sHit && sState.holeR < 15) sLabel = '💥 PERFORATION IN PROGRESS';
+        else if (sHit && !sState.bulletDone) sLabel = '☠ STEEL FAILED';
+        else if (sState.bulletDone) sLabel = '☠ FULL PENETRATION';
         bSteelCtx.font = '9px "Share Tech Mono", monospace';
         bSteelCtx.fillStyle = sHit ? '#ff4444' : '#aaa';
         bSteelCtx.textAlign = 'center';
@@ -2071,7 +2071,7 @@ function launchBallisticTest() {
             kDoneShown = true;
             const el = document.getElementById('kevlar-impact-result');
             if (el) {
-                el.textContent = '✅ ENERGIE ABSORBITĂ — AMENINȚARE NEUTRALIZATĂ';
+                el.textContent = '✅ ENERGY ABSORBED — THREAT NEUTRALIZED';
                 el.className = 'ballistic-result show-kevlar';
             }
         }
@@ -2080,7 +2080,7 @@ function launchBallisticTest() {
             sDoneShown = true;
             const el = document.getElementById('steel-impact-result');
             if (el) {
-                el.textContent = '❌ MATERIAL PERFORAT — PENETRARE LETALĂ';
+                el.textContent = '❌ MATERIAL PERFORATED — LETHAL PENETRATION';
                 el.className = 'ballistic-result show-steel';
             }
         }
@@ -2089,7 +2089,7 @@ function launchBallisticTest() {
             requestAnimationFrame(frame);
         } else {
             ballisticAnimating = false;
-            setPhaseLabel('TEST COMPLET — APASĂ DIN NOU', 'done');
+            setPhaseLabel('TEST COMPLETE — PRESS AGAIN', 'done');
         }
     }
 
@@ -2182,13 +2182,13 @@ function launchBallisticTest() {
                 status.className = 'break-status broken';
                 broken = true;
             } else if (integrity < 30) {
-                status.textContent = '⚠ DEGRADARE CRITICĂ';
+                status.textContent = '⚠ CRITICAL DEGRADATION';
                 status.className = 'break-status danger';
             } else if (integrity < 60) {
-                status.textContent = '⚠ DEGRADARE PARȚIALĂ';
+                status.textContent = '⚠ PARTIAL DEGRADATION';
                 status.className = 'break-status danger';
             } else {
-                status.textContent = 'STRUCTURĂ INTACTĂ';
+                status.textContent = 'STRUCTURE INTACT';
                 status.className = 'break-status';
                 broken = false;
             }
@@ -2309,13 +2309,13 @@ function launchBallisticTest() {
 
         const verdict = document.getElementById('calc-verdict');
         if (penProb < 10) {
-            verdict.textContent = '✅ PROTECȚIE COMPLETĂ — NIJ IIIA CONFORMANT';
+            verdict.textContent = '✅ FULL PROTECTION — NIJ IIIA COMPLIANT';
             verdict.className = 'calc-verdict safe';
         } else if (penProb < 50) {
-            verdict.textContent = '⚠ PROTECȚIE PARȚIALĂ — RISC MODERAT';
+            verdict.textContent = '⚠ PARTIAL PROTECTION — MODERATE RISK';
             verdict.className = 'calc-verdict warning';
         } else {
-            verdict.textContent = '❌ PENETRARE PROBABILĂ — PROTECȚIE INSUFICIENTĂ';
+            verdict.textContent = '❌ PROBABLE PENETRATION — INSUFFICIENT PROTECTION';
             verdict.className = 'calc-verdict danger';
         }
 
@@ -2566,11 +2566,11 @@ function launchBallisticTest() {
     let fps = 60;
 
     const stepMessages = [
-        ['[00:00] Sistema inițializat. Standby.'],
-        ['[S1] Adăugare monomeri PPD + TCl în NMP...', '[S1] Temperatură coborâtă la -10°C...', '[S1] Amestecarea soluției anizotrope...', '[S1] Monomeri distribuiți uniform. ✓'],
-        ['[S2] Inițiere policondensare la 80°C...', '[S2] Eliminare HCl: 2n mol detectat...', '[S2] Creștere Mw observată: → 50,000 g/mol', '[S2] Polimerizare completă. PPTA format. ✓'],
-        ['[S3] Pompare soluție prin filieră...', '[S3] Coagulare în H₂SO₄ 100%...', '[S3] Orientare axială: 95% aliniere...', '[S3] Fibra Kevlar extrudată. ✓'],
-        ['[S4] Montare fibră în aparat Zwick-Roell...', '[S4] Forță aplicată: 0 → 3,620 MPa...', '[S4] BFD măsurat: 12mm (limita NIJ: 44mm)', '[S4] CERTIFICAT NIJ IIIA ACORDAT! ✓']
+        ['[00:00] System initialized. Standby.'],
+        ['[S1] Adding PPD + TCl monomers in NMP...', '[S1] Temperature lowered to -10°C...', '[S1] Mixing anisotropic solution...', '[S1] Monomers uniformly distributed. ✓'],
+        ['[S2] Initiating polycondensation at 80°C...', '[S2] HCl elimination: 2n mol detected...', '[S2] Mw growth observed: → 50,000 g/mol', '[S2] Polymerization complete. PPTA formed. ✓'],
+        ['[S3] Pumping solution through spinneret...', '[S3] Coagulation in H₂SO₄ 100%...', '[S3] Axial orientation: 95% alignment...', '[S3] Kevlar fiber extruded. ✓'],
+        ['[S4] Mounting fiber in Zwick-Roell apparatus...', '[S4] Force applied: 0 → 3,620 MPa...', '[S4] BFD measured: 12mm (NIJ limit: 44mm)', '[S4] NIJ IIIA CERTIFICATE GRANTED! ✓']
     ];
 
     function resize() {
@@ -2696,7 +2696,7 @@ function launchBallisticTest() {
         const step = currentStep;
         if (step === 0) {
             ctx.font = '13px Orbitron, monospace'; ctx.fillStyle = 'rgba(0,255,136,0.25)';
-            ctx.textAlign = 'center'; ctx.fillText('AȘTEPTÂND COMANDĂ...', canvas.width / 2, canvas.height / 2);
+            ctx.textAlign = 'center'; ctx.fillText('AWAITING COMMAND...', canvas.width / 2, canvas.height / 2);
         } else if (step === 1) {
             // Monomer mixing
             particles.forEach(p => {
@@ -2758,7 +2758,7 @@ function launchBallisticTest() {
             ctx.font = '9px Share Tech Mono, monospace';
             ctx.fillStyle = 'rgba(0,255,136,0.45)';
             ctx.textAlign = 'center';
-            ctx.fillText('LANȚURI PPTA LINIARE RIGIDE — PPD(cyan) + TCl(gold)', canvas.width / 2, canvas.height - 8);
+            ctx.fillText('RIGID LINEAR PPTA CHAINS — PPD(cyan) + TCl(gold)', canvas.width / 2, canvas.height - 8);
         } else if (step === 3) {
             // Fiber extrusion - helical fibers flowing down
             const numFibers = Math.floor(progress / 12) + 1;
@@ -2944,7 +2944,7 @@ function launchBallisticTest() {
         }
 
         // ── Info text ──
-        const unitLabel = nodeCount % 2 === 0 ? `(${nodeCount / 2} unități PPTA)` : `(${Math.floor(nodeCount / 2)} unități + 1 monomer)`;
+        const unitLabel = nodeCount % 2 === 0 ? `(${nodeCount / 2} PPTA units)` : `(${Math.floor(nodeCount / 2)} units + 1 monomer)`;
         ctx.font = 'bold 11px Orbitron, monospace';
         ctx.fillStyle = '#00ff88';
         ctx.shadowBlur = 6; ctx.shadowColor = '#00ff88';
@@ -3079,7 +3079,7 @@ function launchBallisticTest() {
                     if (nextBtn) { nextBtn.disabled = false; nextBtn.textContent = '▶ RUN'; }
                     addTerminalLine(`[OK] Pas ${stepNum} finalizat. Pas ${stepNum + 1} deblocat.`);
                 } else {
-                    addTerminalLine('[✓] SINTEZĂ COMPLETĂ! KEVLAR PPTA certificat NIJ IIIA');
+                    addTerminalLine('[✓] SYNTHESIS COMPLETE! KEVLAR PPTA certified NIJ IIIA');
                     const si = document.getElementById('lmd-step-info'); if (si) si.textContent = 'COMPLET ✅';
                     const molInfo = document.getElementById('ldp-mol-info');
                     if (molInfo) molInfo.querySelector('.ldpmi-content').textContent = '🏆 KEVLAR SINTETIZAT! σ = 3,620 MPa | Mw = 52,400 g/mol | NIJ IIIA CERTIFICAT | Randament: 97.3%';

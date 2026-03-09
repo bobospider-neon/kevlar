@@ -16,6 +16,62 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=2">
+    <style>
+        /* ── SCROLL REVEAL ANIMATIONS ── */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Stagger delays for children */
+        .scroll-reveal.delay-1 { transition-delay: 0.1s; }
+        .scroll-reveal.delay-2 { transition-delay: 0.2s; }
+        .scroll-reveal.delay-3 { transition-delay: 0.3s; }
+        .scroll-reveal.delay-4 { transition-delay: 0.4s; }
+        .scroll-reveal.delay-5 { transition-delay: 0.5s; }
+
+        /* Slide from left variant */
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        .scroll-reveal-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        /* Slide from right variant */
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        .scroll-reveal-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* For users who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal,
+            .scroll-reveal-left,
+            .scroll-reveal-right {
+                transition: none;
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 
     <!-- Video Section Styles -->
     <style>
@@ -284,7 +340,7 @@
             }
         }
     </style>
-    <a href="site_eng/index.html" class="lang-switch-btn">EN</a>
+    <a href="../index.html" class="lang-switch-btn">RO</a>
 
     <!-- KEVLAR AAA BACKGROUND -->
     <canvas id="cvs"></canvas>
@@ -621,7 +677,7 @@
     <!-- Dynamics Panel with 3D Camera -->
     <div id="dynamics-panel" class="dynamics-panel hidden">
         <div class="dynamics-header">
-            <span class="dynamics-status">● SISTEM</span>
+            <span class="dynamics-status">● SYSTEM</span>
             <span class="military-text rgb-text">CAMERA DYNAMICS</span>
         </div>
         <canvas id="camera-3d-model" class="camera-model-canvas"></canvas>
@@ -676,9 +732,9 @@
 
                 <h1 class="military-text hero-title glitch gold-glow">KEVLAR 3D</h1>
                 <h2 class="military-text hero-subtitle rgb-text">SUPREMACY</h2>
-                <p class="hero-description">Arhitectură Balistică Bio-Mimetică în 3D Real-Time</p>
-                <p class="hero-subdesc">Tehnologie supremă pentru misiuni spațiale și apărare globală. Controlează
-                    armura. Explorează fibrele moleculare. Simte puterea absolută.</p>
+                <p class="hero-description">Bio-Mimetic Ballistic Architecture in Real-Time 3D</p>
+                <p class="hero-subdesc">Supreme technology for space missions and global defense. Control the armor.
+                    Explore the molecular fibers. Feel the absolute power.</p>
 
                 <!-- Stats Grid -->
                 <div class="stats-grid ultra-stats-grid">
@@ -689,7 +745,7 @@
                                 <span class="military-text usc-value counter" data-target="850">0</span>
                                 <span class="usc-unit">%</span>
                             </div>
-                            <div class="usc-label">MAI PUTERNIC VS OȚEL</div>
+                            <div class="usc-label">STRONGER THAN STEEL</div>
                             <div class="usc-bar">
                                 <div class="usc-fill" style="width:95%"></div>
                             </div>
@@ -702,7 +758,7 @@
                                 <span class="military-text usc-value counter" data-target="5">0</span>
                                 <span class="usc-unit">X</span>
                             </div>
-                            <div class="usc-label">REZISTENȚĂ IMPACT</div>
+                            <div class="usc-label">IMPACT RESISTANCE</div>
                             <div class="usc-bar">
                                 <div class="usc-fill" style="width:100%"></div>
                             </div>
@@ -715,7 +771,7 @@
                                 <span class="military-text usc-value">-60</span>
                                 <span class="usc-unit">%</span>
                             </div>
-                            <div class="usc-label">GREUTATE REDUSĂ</div>
+                            <div class="usc-label">REDUCED WEIGHT</div>
                             <div class="usc-bar">
                                 <div class="usc-fill" style="width:60%"></div>
                             </div>
@@ -728,7 +784,7 @@
                                 <span class="military-text usc-value">∞</span>
                                 <span class="usc-unit"></span>
                             </div>
-                            <div class="usc-label">DURABILITATE</div>
+                            <div class="usc-label">DURABILITY</div>
                             <div class="usc-bar">
                                 <div class="usc-fill" style="width:100%"></div>
                             </div>
@@ -758,7 +814,7 @@
                                     <polyline points="12 6 12 12 16 14"></polyline>
                                 </svg>
                             </span>
-                            <span class="rcn-label military-text">ISTORIA KEVLAR</span>
+                            <span class="rcn-label military-text">KEVLAR HISTORY</span>
                         </button>
                         <button onclick="document.getElementById('break-section').scrollIntoView({behavior:'smooth'})"
                             class="rcn-btn rcn-btn-red">
@@ -796,8 +852,8 @@
         <section id="comparison-section" class="content-section comparison-section hidden">
             <div class="section-content">
                 <div class="data-stream">[COMPARISON] // KEVLAR_VS_MATERIALS_3D</div>
-                <h2 class="military-text section-title gold-glow">KEVLAR VS OȚEL VS ALUMINIU</h2>
-                <p class="section-subtitle">Comparație 3D Interactivă la Nivel Molecular</p>
+                <h2 class="military-text section-title gold-glow">KEVLAR VS STEEL VS ALUMINUM</h2>
+                <p class="section-subtitle">Interactive 3D Molecular-Level Comparison</p>
 
                 <div class="comparison-container triple-compare">
                     <div class="comparison-panel kevlar-panel tactical-border">
@@ -805,19 +861,19 @@
                         <div class="panel-label military-text gold-glow">KEVLAR</div>
                         <div class="panel-stats">
                             <div class="panel-stat">
-                                <span class="stat-name">Densitate</span>
+                                <span class="stat-name">Density</span>
                                 <span class="stat-val gold">1.44 g/cm³</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Tensiune</span>
+                                <span class="stat-name">Tensile</span>
                                 <span class="stat-val gold">3,620 MPa</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Greutate</span>
+                                <span class="stat-name">Weight</span>
                                 <span class="stat-val gold">ULTRA-LIGHT</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Flexibilitate</span>
+                                <span class="stat-name">Flexibility</span>
                                 <span class="stat-val gold">EXTREME</span>
                             </div>
                         </div>
@@ -830,22 +886,22 @@
 
                     <div class="comparison-panel steel-panel tactical-border">
                         <canvas id="steel-canvas" class="comparison-canvas"></canvas>
-                        <div class="panel-label military-text">OȚEL</div>
+                        <div class="panel-label military-text">STEEL</div>
                         <div class="panel-stats">
                             <div class="panel-stat">
-                                <span class="stat-name">Densitate</span>
+                                <span class="stat-name">Density</span>
                                 <span class="stat-val">7.85 g/cm³</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Tensiune</span>
+                                <span class="stat-name">Tensile</span>
                                 <span class="stat-val">400 MPa</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Greutate</span>
+                                <span class="stat-name">Weight</span>
                                 <span class="stat-val">HEAVY</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Flexibilitate</span>
+                                <span class="stat-name">Flexibility</span>
                                 <span class="stat-val">RIGID</span>
                             </div>
                         </div>
@@ -860,22 +916,22 @@
                         <div class="aluminum-visual">
                             <div class="aluminum-cube"></div>
                         </div>
-                        <div class="panel-label military-text cyan">ALUMINIU</div>
+                        <div class="panel-label military-text cyan">ALUMINUM</div>
                         <div class="panel-stats">
                             <div class="panel-stat">
-                                <span class="stat-name">Densitate</span>
+                                <span class="stat-name">Density</span>
                                 <span class="stat-val cyan">2.70 g/cm³</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Tensiune</span>
+                                <span class="stat-name">Tensile</span>
                                 <span class="stat-val cyan">310 MPa</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Greutate</span>
+                                <span class="stat-name">Weight</span>
                                 <span class="stat-val cyan">LIGHT</span>
                             </div>
                             <div class="panel-stat">
-                                <span class="stat-name">Flexibilitate</span>
+                                <span class="stat-name">Flexibility</span>
                                 <span class="stat-val cyan">MEDIUM</span>
                             </div>
                         </div>
@@ -922,12 +978,12 @@
                     <div class="data-stream" style="text-align: center; margin-bottom: 1rem;">[ANALYSIS] //
                         MATERIAL_COMPARISON_RESULTS</div>
                     <h3 class="military-text section-title rgb-text" style="font-size: 1.8rem; margin-bottom: 2rem;">🏆
-                        DE CE KEVLAR ESTE CÂȘTIGĂTORUL?</h3>
+                        WHY IS KEVLAR THE WINNER?</h3>
 
                     <!-- Performance Bars -->
                     <div class="performance-comparison-grid">
                         <div class="perf-category">
-                            <div class="perf-label">REZISTENȚĂ LA TRACȚIUNE (MPa)</div>
+                            <div class="perf-label">TENSILE STRENGTH (MPa)</div>
                             <div class="perf-bars">
                                 <div class="perf-bar-item kevlar-bar">
                                     <span class="bar-label gold">KEVLAR</span>
@@ -937,14 +993,14 @@
                                     <span class="bar-value gold">3,620</span>
                                 </div>
                                 <div class="perf-bar-item steel-bar">
-                                    <span class="bar-label">OȚEL</span>
+                                    <span class="bar-label">STEEL</span>
                                     <div class="bar-container">
                                         <div class="bar-fill steel-fill" style="width: 11%;"></div>
                                     </div>
                                     <span class="bar-value">400</span>
                                 </div>
                                 <div class="perf-bar-item aluminum-bar">
-                                    <span class="bar-label cyan">ALUMINIU</span>
+                                    <span class="bar-label cyan">ALUMINUM</span>
                                     <div class="bar-container">
                                         <div class="bar-fill cyan-fill" style="width: 8%;"></div>
                                     </div>
@@ -954,7 +1010,7 @@
                         </div>
 
                         <div class="perf-category">
-                            <div class="perf-label">RAPORT REZISTENȚĂ/GREUTATE</div>
+                            <div class="perf-label">STRENGTH/WEIGHT RATIO</div>
                             <div class="perf-bars">
                                 <div class="perf-bar-item kevlar-bar">
                                     <span class="bar-label gold">KEVLAR</span>
@@ -964,14 +1020,14 @@
                                     <span class="bar-value gold">2,514</span>
                                 </div>
                                 <div class="perf-bar-item steel-bar">
-                                    <span class="bar-label">OȚEL</span>
+                                    <span class="bar-label">STEEL</span>
                                     <div class="bar-container">
                                         <div class="bar-fill steel-fill" style="width: 2%;"></div>
                                     </div>
                                     <span class="bar-value">51</span>
                                 </div>
                                 <div class="perf-bar-item aluminum-bar">
-                                    <span class="bar-label cyan">ALUMINIU</span>
+                                    <span class="bar-label cyan">ALUMINUM</span>
                                     <div class="bar-container">
                                         <div class="bar-fill cyan-fill" style="width: 4.5%;"></div>
                                     </div>
@@ -986,59 +1042,59 @@
                         <div class="winner-stat gold-stat">
                             <div class="winner-icon">⚡</div>
                             <div class="winner-value gold">9x</div>
-                            <div class="winner-label">Mai Rezistent decât Oțelul</div>
+                            <div class="winner-label">Stronger Than Steel</div>
                         </div>
                         <div class="winner-stat cyan-stat">
                             <div class="winner-icon">🪶</div>
                             <div class="winner-value cyan">5.4x</div>
-                            <div class="winner-label">Mai Ușor decât Oțelul</div>
+                            <div class="winner-label">Lighter Than Steel</div>
                         </div>
                         <div class="winner-stat gold-stat">
                             <div class="winner-icon">🛡️</div>
                             <div class="winner-value gold">11.7x</div>
-                            <div class="winner-label">Mai Puternic ca Aluminiul</div>
+                            <div class="winner-label">Stronger Than Aluminum</div>
                         </div>
                         <div class="winner-stat cyan-stat">
                             <div class="winner-icon">♾️</div>
                             <div class="winner-value cyan">0%</div>
-                            <div class="winner-label">Coroziune (vs 100% oțel)</div>
+                            <div class="winner-label">Corrosion (vs 100% steel)</div>
                         </div>
                     </div>
 
                     <!-- Detailed Analysis -->
                     <div class="detailed-analysis-box">
-                        <h4 class="military-text gold">📊 ANALIZĂ ȘTIINȚIFICĂ DETALIATĂ</h4>
+                        <h4 class="military-text gold">📊 DETAILED SCIENTIFIC ANALYSIS</h4>
                         <div class="analysis-grid">
                             <div class="analysis-item">
                                 <span class="analysis-icon">🔬</span>
                                 <div class="analysis-content">
-                                    <strong class="gold">Structură Moleculară:</strong>
-                                    Kevlarul are lanțuri polimerice aliniate paralel, formând legături de hidrogen între
-                                    molecule. Această structură oferă o rezistență excepțională pe direcția fibrei.
+                                    <strong class="gold">Molecular Structure:</strong>
+                                    Kevlar has parallel-aligned polymer chains forming hydrogen bonds between molecules.
+                                    This structure provides exceptional strength along the fiber direction.
                                 </div>
                             </div>
                             <div class="analysis-item">
                                 <span class="analysis-icon">⚖️</span>
                                 <div class="analysis-content">
-                                    <strong class="cyan">Densitate Minimă:</strong>
-                                    Cu doar 1.44 g/cm³, Kevlarul este de 5.5x mai ușor ca oțelul (7.85 g/cm³) și aproape
-                                    de 2x mai ușor decât aluminiul (2.70 g/cm³).
+                                    <strong class="cyan">Minimal Density:</strong>
+                                    At only 1.44 g/cm³, Kevlar is 5.5x lighter than steel (7.85 g/cm³) and nearly 2x
+                                    lighter than aluminum (2.70 g/cm³).
                                 </div>
                             </div>
                             <div class="analysis-item">
                                 <span class="analysis-icon">🔥</span>
                                 <div class="analysis-content">
-                                    <strong class="gold">Rezistență Termică:</strong>
-                                    Kevlarul își menține proprietățile până la 400°C, în timp ce aluminiul se topește la
-                                    660°C și oțelul la 1,500°C - dar Kevlarul nu transferă căldura!
+                                    <strong class="gold">Thermal Resistance:</strong>
+                                    Kevlar maintains its properties up to 400°C, while aluminum melts at 660°C and steel
+                                    at 1,500°C — but Kevlar doesn't transfer heat!
                                 </div>
                             </div>
                             <div class="analysis-item">
                                 <span class="analysis-icon">💧</span>
                                 <div class="analysis-content">
-                                    <strong class="cyan">Rezistență la Coroziune:</strong>
-                                    Kevlarul NU RUGINEȘTE și nu corodează, spre deosebire de oțel (rugină) și aluminiu
-                                    (oxidare în medii saline).
+                                    <strong class="cyan">Corrosion Resistance:</strong>
+                                    Kevlar DOES NOT RUST and does not corrode, unlike steel (rust) and aluminum
+                                    (oxidation in saline environments).
                                 </div>
                             </div>
                         </div>
@@ -1049,11 +1105,11 @@
                     <!-- ╚══════════════════════════════════════╝ -->
                     <div class="ballistic-sim-wrapper tactical-border">
                         <div class="data-stream" style="text-align:center; margin-bottom:0.75rem;">
-                            [SIMULARE_BALISTICĂ] // IMPACT_TEST_INTERACTIV // REAL_TIME
+                            [BALLISTIC_SIMULATION] // INTERACTIVE_IMPACT_TEST // REAL_TIME
                         </div>
-                        <h3 class="military-text ballistic-sim-title rgb-text">⚡ TEST IMPACT BALISTIC</h3>
-                        <p class="ballistic-sim-subtitle">Apasă butonul pentru a vizualiza disiparea energiei cinetice
-                            în timp real</p>
+                        <h3 class="military-text ballistic-sim-title rgb-text">⚡ BALLISTIC IMPACT TEST</h3>
+                        <p class="ballistic-sim-subtitle">Press the button to visualize kinetic energy dissipation in
+                            real time</p>
 
                         <div class="ballistic-panels">
 
@@ -1084,7 +1140,7 @@
                                 <div class="bullet-info-box">
                                     <div class="military-text"
                                         style="font-size:0.65rem; color:#888; letter-spacing:2px; margin-bottom:0.5rem;">
-                                        PROIECTIL</div>
+                                        PROJECTILE</div>
                                     <div class="bullet-icon">🎯</div>
                                     <div class="military-text" style="font-size:0.9rem; color:#ffd700;">9mm FMJ</div>
                                     <div
@@ -1099,7 +1155,7 @@
                                 </button>
 
                                 <div class="kinetic-meter">
-                                    <div class="military-text km-label">ENERGIE CINETICĂ</div>
+                                    <div class="military-text km-label">KINETIC ENERGY</div>
                                     <div class="km-bar-outer">
                                         <div id="kinetic-bar" class="km-bar-inner"></div>
                                     </div>
@@ -1112,7 +1168,7 @@
                             <!-- STEEL PANEL -->
                             <div class="ballistic-panel">
                                 <div class="ballistic-mat-label military-text" style="color:#aaa;">
-                                    <span class="mat-dot steel-dot"></span>OȚEL 10mm
+                                    <span class="mat-dot steel-dot"></span>STEEL 10mm
                                 </div>
                                 <div class="ballistic-canvas-wrapper">
                                     <canvas id="steel-impact-canvas" class="ballistic-canvas"></canvas>
@@ -1138,13 +1194,13 @@
                     <!-- Final Verdict -->
                     <div class="final-verdict">
                         <div class="verdict-crown">👑</div>
-                        <h4 class="military-text verdict-title">VERDICT FINAL: KEVLAR ESTE SUPERIORUL ABSOLUT</h4>
+                        <h4 class="military-text verdict-title">FINAL VERDICT: KEVLAR IS THE ABSOLUTE SUPERIOR</h4>
                         <p class="verdict-text">
-                            Combinând <strong class="gold">rezistența extraordinară</strong> cu <strong
-                                class="cyan">greutatea minimă</strong>,
-                            Kevlarul oferă cel mai bun raport performanță/greutate dintre toate materialele testate.
-                            Este alegerea #1 pentru veste antiglonț, echipamente militare și aplicații aerospațiale
-                            unde fiecare gram contează. <strong>Nici oțelul, nici aluminiul nu pot concura!</strong>
+                            Combining <strong class="gold">extraordinary strength</strong> with <strong
+                                class="cyan">minimal weight</strong>,
+                            Kevlar offers the best performance/weight ratio of all tested materials.
+                            It is the #1 choice for bulletproof vests, military equipment and aerospace applications
+                            where every gram counts. <strong>Neither steel nor aluminum can compete!</strong>
                         </p>
                     </div>
                 </div>
@@ -1161,8 +1217,8 @@
         <section id="timeline-section" class="content-section timeline-section timeline-collapsed">
             <div class="section-content">
                 <div class="data-stream">[TIMELINE] // KEVLAR_DISCOVERY_HISTORY</div>
-                <h2 class="military-text section-title gold-glow">ISTORIA KEVLARULUI</h2>
-                <p class="section-subtitle">O descoperire revoluționară născută dintr-un „eșec" de laborator</p>
+                <h2 class="military-text section-title gold-glow">HISTORY OF KEVLAR</h2>
+                <p class="section-subtitle">A revolutionary discovery born from a laboratory "failure"</p>
 
                 <!-- 3D Timeline Canvas -->
                 <div class="timeline-3d-container tactical-border">
@@ -1182,27 +1238,28 @@
                 <div class="timeline-wrapper">
                     <div class="timeline-line"></div>
 
-                    <div class="timeline-node" data-year="1965">
-                        <div class="timeline-year-badge military-text gold-glow">1965</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
-                            <h3 class="military-text gold">DESCOPERIREA ACCIDENTALĂ</h3>
-                            <p>Stephanie Kwolek, chimist la DuPont, lucra la găsirea unei fibre ușoare pentru anvelope.
-                                A obținut o soluție tulbure și apoasă pe care orice chimist ar fi aruncat-o. Ea a
-                                insistat să o testeze — rezultatul: o fibră de <strong>5 ori mai rezistentă decât
-                                    oțelul</strong>.</p>
+                    <div class="timeline-node scroll-reveal" data-year="1965">
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">1965</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
+                            <h3 class="military-text gold">THE ACCIDENTAL DISCOVERY</h3>
+                            <p>Stephanie Kwolek, chemist at DuPont, was working on finding a lightweight fiber for
+                                tires.
+                                She obtained a cloudy, watery solution that any chemist would have discarded. She
+                                insisted on testing it — the result: a fiber <strong>5 times stronger than
+                                    steel</strong>.</p>
                             <div class="timeline-stats">
-                                <span class="stat-badge gold"><strong>5X</strong> vs oțel</span>
+                                <span class="stat-badge gold"><strong>5X</strong> vs steel</span>
                                 <span class="stat-badge cyan">DuPont Labs</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="1971">
-                        <div class="timeline-year-badge military-text cyber-glow">1971</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
-                            <h3 class="military-text cyan">PRODUCȚIE COMERCIALĂ</h3>
-                            <p>După 6 ani de cercetare și dezvoltare, Kevlarul intră în producție comercială sub brevet
-                                DuPont. Primele aplicații: industria auto și echipamente industriale.</p>
+                    <div class="timeline-node scroll-reveal" data-year="1971">
+                        <div class="timeline-year-badge military-text cyber-glow scroll-reveal-left delay-1">1971</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
+                            <h3 class="military-text cyan">COMMERCIAL PRODUCTION</h3>
+                            <p>After 6 years of research and development, Kevlar enters commercial production under the
+                                DuPont patent. First applications: automotive industry and industrial equipment.</p>
                             <div class="timeline-stats">
                                 <span class="stat-badge gold">Brevet DuPont</span>
                                 <span class="stat-badge cyan">Industrial use</span>
@@ -1210,35 +1267,35 @@
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="1975">
-                        <div class="timeline-year-badge military-text gold-glow">1975</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
-                            <h3 class="military-text gold">VESTE ANTIGLONȚ</h3>
-                            <p>Prima aplicație în echipamente de protecție balistică. Vestele antiglonț din Kevlar încep
-                                să salveze viețile polițiștilor și soldaților din întreaga lume.</p>
+                    <div class="timeline-node scroll-reveal" data-year="1975">
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">1975</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
+                            <h3 class="military-text gold">BULLETPROOF VESTS</h3>
+                            <p>First application in ballistic protection equipment. Kevlar bulletproof vests begin
+                                saving the lives of police officers and soldiers around the world.</p>
                             <div class="timeline-stats">
                                 <span class="stat-badge gold">NIJ Level IIIA</span>
-                                <span class="stat-badge cyan">1000+ vieți salvate</span>
+                                <span class="stat-badge cyan">1000+ lives saved</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="1988">
-                        <div class="timeline-year-badge military-text cyber-glow">1988</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
-                            <h3 class="military-text cyan">APLICAȚII NASA</h3>
-                            <p>NASA adoptă Kevlarul pentru protecția echipajelor spațiale împotriva micrometoritelor și
-                                debris-ului orbital. Materialul devine standard pentru misiunile ISS.</p>
+                    <div class="timeline-node scroll-reveal" data-year="1988">
+                        <div class="timeline-year-badge military-text cyber-glow scroll-reveal-left delay-1">1988</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
+                            <h3 class="military-text cyan">NASA APPLICATIONS</h3>
+                            <p>NASA adopts Kevlar for protecting space crews against micrometeoroids and orbital
+                                debris. The material becomes standard for ISS missions.</p>
                             <div class="timeline-stats">
                                 <span class="stat-badge gold">ISS Shield</span>
-                                <span class="stat-badge cyan">28,000 km/h protecție</span>
+                                <span class="stat-badge cyan">28,000 km/h protection</span>
                             </div>
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="2026">
-                        <div class="timeline-year-badge military-text gold-glow">PREZENT</div>
-                        <div class="timeline-content tactical-border ultra-card">
+                    <div class="timeline-node scroll-reveal" data-year="2026">
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">PREZENT</div>
+                        <div class="timeline-content tactical-border ultra-card scroll-reveal delay-2">
                             <canvas class="ultra-card-canvas" id="uc-canvas"></canvas>
                             <div class="uc-corner tl"></div>
                             <div class="uc-corner tr"></div>
@@ -1248,32 +1305,32 @@
                             <div class="uc-inner">
                                 <div class="uc-title-row">
                                     <div class="uc-pulse-dot"></div>
-                                    <h3 class="military-text gold uc-title">APLICAȚII UNIVERSALE</h3>
+                                    <h3 class="military-text gold uc-title">UNIVERSAL APPLICATIONS</h3>
                                 </div>
                                 <div class="uc-apps-grid">
-                                    <div class="uc-app" style="--d:0s"><span class="uc-app-icon">🛡️</span><span>Veste
-                                            antiglonț</span></div>
-                                    <div class="uc-app" style="--d:.08s"><span class="uc-app-icon">🪖</span><span>Căști
-                                            balistice</span></div>
+                                    <div class="uc-app" style="--d:0s"><span
+                                            class="uc-app-icon">🛡️</span><span>Bulletproof vests</span></div>
+                                    <div class="uc-app" style="--d:.08s"><span
+                                            class="uc-app-icon">🪖</span><span>Ballistic helmets</span></div>
                                     <div class="uc-app" style="--d:.16s"><span
-                                            class="uc-app-icon">🚗</span><span>Anvelope</span></div>
+                                            class="uc-app-icon">🚗</span><span>Tires</span></div>
                                     <div class="uc-app" style="--d:.24s"><span class="uc-app-icon">🚀</span><span>Mars
                                             Rovers</span></div>
                                     <div class="uc-app" style="--d:.32s"><span class="uc-app-icon">🏎️</span><span>Sport
                                             F1</span></div>
-                                    <div class="uc-app" style="--d:.4s"><span class="uc-app-icon">🌊</span><span>Odgoane
-                                            marine</span></div>
+                                    <div class="uc-app" style="--d:.4s"><span class="uc-app-icon">🌊</span><span>Marine
+                                            ropes</span></div>
                                 </div>
                                 <div class="uc-bar-row">
                                     <div class="uc-bar-item">
-                                        <div class="uc-bar-label">Rezistență</div>
+                                        <div class="uc-bar-label">Strength</div>
                                         <div class="uc-bar-track">
                                             <div class="uc-bar-fill" style="--w:98%"></div>
                                         </div>
-                                        <div class="uc-bar-val gold">5× oțel</div>
+                                        <div class="uc-bar-val gold">5× steel</div>
                                     </div>
                                     <div class="uc-bar-item">
-                                        <div class="uc-bar-label">Greutate</div>
+                                        <div class="uc-bar-label">Weight</div>
                                         <div class="uc-bar-track">
                                             <div class="uc-bar-fill cyan" style="--w:82%"></div>
                                         </div>
@@ -1281,8 +1338,8 @@
                                     </div>
                                 </div>
                                 <div class="timeline-stats">
-                                    <span class="stat-badge gold uc-badge">17 Brevete</span>
-                                    <span class="stat-badge cyan uc-badge">∞ Vieți salvate</span>
+                                    <span class="stat-badge gold uc-badge">17 Patents</span>
+                                    <span class="stat-badge cyan uc-badge">∞ Lives saved</span>
                                 </div>
                             </div>
                         </div>
@@ -1290,12 +1347,12 @@
                 </div>
 
                 <!-- Technical Documentation Grid -->
-                <div class="data-stream" style="margin-top: 4rem;">[TECHNICAL_DOCS] // MOLECULAR_PROPERTIES</div>
-                <h3 class="military-text section-title cyber-glow" style="font-size: 2rem; margin: 2rem 0;">DOCUMENTAȚIE
-                    TEHNICĂ</h3>
+                <div class="data-stream scroll-reveal" style="margin-top: 4rem;">[TECHNICAL_DOCS] // MOLECULAR_PROPERTIES</div>
+                <h3 class="military-text section-title cyber-glow scroll-reveal delay-1" style="font-size: 2rem; margin: 2rem 0;">TECHNICAL
+                    DOCUMENTATION</h3>
 
                 <div class="hud-doc-grid">
-                    <div class="hud-doc-card" data-color="gold">
+                    <div class="hud-doc-card scroll-reveal delay-1" data-color="gold">
                         <div class="hdc-scan"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1305,25 +1362,25 @@
                             <div class="hdc-icon-wrap"><span class="hdc-icon">🧪</span></div>
                             <div class="hdc-meta">
                                 <div class="hdc-tag">DOC-001 // HISTORICAL</div>
-                                <div class="hdc-status">● DECRIPTAT</div>
+                                <div class="hdc-status">● DECRYPTED</div>
                             </div>
                         </div>
-                        <h4 class="hdc-title gold">CONTEXTUL DESCOPERIRII</h4>
-                        <p class="hdc-text">În 1965, criza anticipată a combustibilului forța industria auto să caute
-                            soluții pentru mașini mai ușoare. DuPont căuta o fibră sintetică care să înlocuiască sârma
-                            de oțel din anvelope — o mașină mai ușoară consumă mai puțină benzină.</p>
+                        <h4 class="hdc-title gold">DISCOVERY CONTEXT</h4>
+                        <p class="hdc-text">In 1965, the anticipated fuel crisis was forcing the automotive industry to
+                            seek solutions for lighter vehicles. DuPont was looking for a synthetic fiber to replace
+                            steel wire in tires — a lighter car uses less fuel.</p>
                         <div class="hdc-stats-row">
-                            <div class="hdc-stat"><span class="hds-val gold">1965</span><span class="hds-lbl">An
-                                    descoperire</span></div>
+                            <div class="hdc-stat"><span class="hds-val gold">1965</span><span class="hds-lbl">Discovery
+                                    year</span></div>
                             <div class="hdc-stat"><span class="hds-val">DuPont</span><span
-                                    class="hds-lbl">Laborator</span></div>
+                                    class="hds-lbl">Laboratory</span></div>
                         </div>
                         <div class="hdc-bar-wrap">
                             <div class="hdc-bar gold-bar" style="--bw:78%"></div>
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="cyan">
+                    <div class="hud-doc-card scroll-reveal delay-2" data-color="cyan">
                         <div class="hdc-scan" style="animation-delay:-1.3s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1333,13 +1390,13 @@
                             <div class="hdc-icon-wrap cyan-icon"><span class="hdc-icon">⚛️</span></div>
                             <div class="hdc-meta">
                                 <div class="hdc-tag">DOC-002 // MOLECULAR</div>
-                                <div class="hdc-status cyan-status">● ACTIV</div>
+                                <div class="hdc-status cyan-status">● ACTIVE</div>
                             </div>
                         </div>
-                        <h4 class="hdc-title cyan">STRUCTURA MOLECULARĂ</h4>
-                        <p class="hdc-text">Kevlarul (poli-para-fenilen tereftalamidă) are molecule aliniate paralel,
-                            strâns legate una de alta, orientate în aceeași direcție. Această organizare îi conferă
-                            rezistență extraordinară la tracțiune.</p>
+                        <h4 class="hdc-title cyan">MOLECULAR STRUCTURE</h4>
+                        <p class="hdc-text">Kevlar (poly-para-phenylene terephthalamide) has parallel-aligned molecules,
+                            tightly bonded to each other, oriented in the same direction. This organization gives it
+                            extraordinary tensile strength.</p>
                         <div class="hdc-stats-row">
                             <div class="hdc-stat"><span class="hds-val cyan">3,620</span><span class="hds-lbl">MPa
                                     tensile</span></div>
@@ -1351,7 +1408,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="gold">
+                    <div class="hud-doc-card scroll-reveal delay-3" data-color="gold">
                         <div class="hdc-scan" style="animation-delay:-2.7s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1361,17 +1418,18 @@
                             <div class="hdc-icon-wrap"><span class="hdc-icon">💥</span></div>
                             <div class="hdc-meta">
                                 <div class="hdc-tag">DOC-003 // BALLISTIC</div>
-                                <div class="hdc-status">● CLASIFICAT</div>
+                                <div class="hdc-status">● CLASSIFIED</div>
                             </div>
                         </div>
-                        <h4 class="hdc-title gold">CUM FUNCȚIONEAZĂ</h4>
-                        <p class="hdc-text">Principiul disipării energiei cinetice: fibra nu se rupe, ci se întinde,
-                            preluând șocul și distribuindu-l pe o suprafață largă. Țesătura din straturi suprapuse
-                            oprește obiectele prin flexibilitate și rezistență la rupere.</p>
+                        <h4 class="hdc-title gold">HOW IT WORKS</h4>
+                        <p class="hdc-text">The principle of kinetic energy dissipation: the fiber does not break, but
+                            stretches, absorbing the shock and distributing it over a large area. The fabric of
+                            overlapping layers stops objects through flexibility and resistance to tearing.</p>
                         <div class="hdc-stats-row">
-                            <div class="hdc-stat"><span class="hds-val gold">548 J</span><span class="hds-lbl">Energie
-                                    absorbită</span></div>
-                            <div class="hdc-stat"><span class="hds-val">97%</span><span class="hds-lbl">Eficiență</span>
+                            <div class="hdc-stat"><span class="hds-val gold">548 J</span><span class="hds-lbl">Energy
+                                    absorbed</span></div>
+                            <div class="hdc-stat"><span class="hds-val">97%</span><span
+                                    class="hds-lbl">Efficiency</span>
                             </div>
                         </div>
                         <div class="hdc-bar-wrap">
@@ -1379,7 +1437,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="cyan">
+                    <div class="hud-doc-card scroll-reveal delay-4" data-color="cyan">
                         <div class="hdc-scan" style="animation-delay:-0.5s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1389,26 +1447,27 @@
                             <div class="hdc-icon-wrap cyan-icon"><span class="hdc-icon">🔥</span></div>
                             <div class="hdc-meta">
                                 <div class="hdc-tag">DOC-004 // THERMAL</div>
-                                <div class="hdc-status cyan-status">● TESTAT</div>
+                                <div class="hdc-status cyan-status">● TESTED</div>
                             </div>
                         </div>
-                        <h4 class="hdc-title cyan">REZISTENȚĂ TERMICĂ</h4>
-                        <p class="hdc-text">Kevlarul nu se topește și nu arde ușor — rezistă la temperaturi de peste
-                            <strong style="color:#fff">400°C</strong> fără a se descompune. Ideal pentru costume
-                            pompieri și mănuși de protecție în bucătării industriale.
+                        <h4 class="hdc-title cyan">THERMAL RESISTANCE</h4>
+                        <p class="hdc-text">Kevlar does not melt and does not burn easily — it withstands temperatures
+                            above
+                            <strong style="color:#fff">400°C</strong> without decomposing. Ideal for firefighter suits
+                            and protective gloves in industrial kitchens.
                         </p>
                         <div class="hdc-stats-row">
-                            <div class="hdc-stat"><span class="hds-val cyan">427°C</span><span class="hds-lbl">Temp.
-                                    max.</span></div>
-                            <div class="hdc-stat"><span class="hds-val cyan">LOI 28%</span><span class="hds-lbl">Rezist.
-                                    foc</span></div>
+                            <div class="hdc-stat"><span class="hds-val cyan">427°C</span><span class="hds-lbl">Max
+                                    temp.</span></div>
+                            <div class="hdc-stat"><span class="hds-val cyan">LOI 28%</span><span class="hds-lbl">Fire
+                                    resist.</span></div>
                         </div>
                         <div class="hdc-bar-wrap">
                             <div class="hdc-bar cyan-bar" style="--bw:85%"></div>
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="gold">
+                    <div class="hud-doc-card scroll-reveal delay-3" data-color="gold">
                         <div class="hdc-scan" style="animation-delay:-1.8s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1418,18 +1477,18 @@
                             <div class="hdc-icon-wrap warn-icon"><span class="hdc-icon">⚠️</span></div>
                             <div class="hdc-meta">
                                 <div class="hdc-tag">DOC-005 // LIMITATIONS</div>
-                                <div class="hdc-status warn-status">● AVERTISMENT</div>
+                                <div class="hdc-status warn-status">● WARNING</div>
                             </div>
                         </div>
-                        <h4 class="hdc-title gold">LIMITĂRI</h4>
-                        <p class="hdc-text">Fibrele se degradează la razele UV și absorb umiditatea, slăbindu-le
-                            structura. De aceea, echipamentele de protecție sigilează straturile Kevlar într-un material
-                            impermeabil și opac.</p>
+                        <h4 class="hdc-title gold">LIMITATIONS</h4>
+                        <p class="hdc-text">Fibers degrade under UV rays and absorb moisture, weakening their structure.
+                            That is why protective equipment seals the Kevlar layers in a waterproof and opaque
+                            material.</p>
                         <div class="hdc-stats-row">
                             <div class="hdc-stat"><span class="hds-val" style="color:#ffaa00">UV↓</span><span
-                                    class="hds-lbl">Degradare</span></div>
+                                    class="hds-lbl">Degradation</span></div>
                             <div class="hdc-stat"><span class="hds-val" style="color:#ffaa00">H₂O↑</span><span
-                                    class="hds-lbl">Absorbție</span></div>
+                                    class="hds-lbl">Absorption</span></div>
                         </div>
                         <div class="hdc-bar-wrap">
                             <div class="hdc-bar" style="--bw:35%;background:linear-gradient(90deg,#ff8800,#ffcc00)">
@@ -1437,8 +1496,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="cyan">
-                        <div class="hdc-scan" style="animation-delay:-3.1s"></div>
+                    <div class="hud-doc-card scroll-reveal delay-4" data-color="cyan">
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
                         <div class="hdc-corner bl"></div>
@@ -1447,18 +1505,18 @@
                             <div class="hdc-icon-wrap cyan-icon"><span class="hdc-icon">🎯</span></div>
                             <div class="hdc-meta">
                                 <div class="hdc-tag">DOC-006 // APPLICATIONS</div>
-                                <div class="hdc-status cyan-status">● OPERAȚIONAL</div>
+                                <div class="hdc-status cyan-status">● OPERATIONAL</div>
                             </div>
                         </div>
-                        <h4 class="hdc-title cyan">APLICAȚII</h4>
-                        <p class="hdc-text">Veste antiglonț, căști balistice, blindaje vehicule, parașute Mars rovers,
-                            echipament sportiv (schiuri, rachete tenis), anvelope rezistente la pană, odgoane platforme
-                            marine.</p>
+                        <h4 class="hdc-title cyan">APPLICATIONS</h4>
+                        <p class="hdc-text">Bulletproof vests, ballistic helmets, vehicle armoring, Mars rover
+                            parachutes, sports equipment (skis, tennis rackets), puncture-resistant tires, marine
+                            platform ropes.</p>
                         <div class="hdc-stats-row">
-                            <div class="hdc-stat"><span class="hds-val cyan">200+</span><span class="hds-lbl">Aplicații
-                                    globale</span></div>
-                            <div class="hdc-stat"><span class="hds-val cyan">∞</span><span class="hds-lbl">Vieți
-                                    salvate</span></div>
+                            <div class="hdc-stat"><span class="hds-val cyan">200+</span><span class="hds-lbl">Global
+                                    applications</span></div>
+                            <div class="hdc-stat"><span class="hds-val cyan">∞</span><span class="hds-lbl">Lives
+                                    saved</span></div>
                         </div>
                         <div class="hdc-bar-wrap">
                             <div class="hdc-bar cyan-bar" style="--bw:100%"></div>
@@ -1470,79 +1528,82 @@
                 <div class="silk-comparison-section">
                     <div class="data-stream" style="margin-top: 4rem;">[COMPARISON] // KEVLAR_VS_SPIDER_SILK</div>
                     <h3 class="military-text section-title rgb-text" style="font-size: 2rem; margin: 2rem 0;">KEVLAR VS
-                        MĂTASE DE PĂIANJEN</h3>
+                        SPIDER SILK</h3>
 
-                    <div class="myth-buster tactical-border glow-card">
+                    <div class="myth-buster tactical-border glow-card scroll-reveal">
                         <div class="myth-header">
                             <span class="myth-icon">🕷️</span>
-                            <h4 class="military-text gold">MIT DEMONTAT</h4>
+                            <h4 class="military-text gold">MYTH BUSTED</h4>
                         </div>
-                        <p class="myth-text">Kevlarul <strong>NU</strong> a fost inspirat direct de păianjeni! Stephanie
-                            Kwolek lucra pur chimic, la polimeri aromatici în laborator. Descoperirea a venit din
-                            structura moleculară, nu din biomimetică. Podobitatea este o coincidență a fizicii
-                            materialelor.</p>
+                        <p class="myth-text">Kevlar was <strong>NOT</strong> directly inspired by spiders! Stephanie
+                            Kwolek worked purely chemically, on aromatic polymers in the laboratory. The discovery came
+                            from
+                            molecular structure, not biomimicry. The similarity is a coincidence of materials physics.
+                        </p>
                     </div>
 
-                    <div class="silk-compare-grid">
-                        <div class="compare-column tactical-border">
-                            <h4 class="military-text gold">🧬 MĂTASE PĂIANJEN</h4>
+                    <div class="silk-compare-grid scroll-reveal delay-1">
+                        <div class="compare-column tactical-border scroll-reveal-left delay-2">
+                            <h4 class="military-text gold">🧬 SPIDER SILK</h4>
                             <ul>
-                                <li><span class="prop">Rezistență:</span> <span class="val cyan">Foarte mare</span></li>
-                                <li><span class="prop">Densitate:</span> <span class="val cyan">Foarte mică</span></li>
-                                <li><span class="prop">Tip:</span> <span class="val">Natural, elastic</span></li>
-                                <li><span class="prop">Producție:</span> <span class="val">Biologică</span></li>
+                                <li><span class="prop">Strength:</span> <span class="val cyan">Very high</span></li>
+                                <li><span class="prop">Density:</span> <span class="val cyan">Very low</span></li>
+                                <li><span class="prop">Type:</span> <span class="val">Natural, elastic</span></li>
+                                <li><span class="prop">Production:</span> <span class="val">Biological</span></li>
                             </ul>
                         </div>
                         <div class="compare-vs">
                             <span class="military-text rgb-text">VS</span>
                         </div>
-                        <div class="compare-column tactical-border">
+                        <div class="compare-column tactical-border scroll-reveal-right delay-2">
                             <h4 class="military-text cyan">🛡️ KEVLAR</h4>
                             <ul>
-                                <li><span class="prop">Rezistență:</span> <span class="val gold">Și mai mare</span></li>
-                                <li><span class="prop">Densitate:</span> <span class="val gold">Mică</span></li>
-                                <li><span class="prop">Tip:</span> <span class="val">Sintetic, rigid</span></li>
-                                <li><span class="prop">Producție:</span> <span class="val">Chimică</span></li>
+                                <li><span class="prop">Strength:</span> <span class="val gold">Even higher</span></li>
+                                <li><span class="prop">Density:</span> <span class="val gold">Low</span></li>
+                                <li><span class="prop">Type:</span> <span class="val">Synthetic, rigid</span></li>
+                                <li><span class="prop">Production:</span> <span class="val">Chemical</span></li>
                             </ul>
                         </div>
                     </div>
 
-                    <div class="similarity-note tactical-border">
-                        <p><strong class="gold">De ce seamănă totuși?</strong> Ambele au lanțuri moleculare aliniate,
-                            legături foarte puternice pe direcția fibrei și distribuie forța de-a lungul firului. Este
-                            fizica materialelor, nu inspirație din natură! 🧠</p>
+                    <div class="similarity-note tactical-border scroll-reveal delay-3">
+                        <p><strong class="gold">Why are they similar then?</strong> Both have aligned molecular chains,
+                            very strong bonds along the fiber direction, and distribute force along the thread. It's
+                            materials physics, not inspiration from nature! 🧠</p>
                     </div>
                 </div>
 
                 <!-- Stephanie Kwolek Bio -->
                 <div class="bio-section">
                     <div class="data-stream" style="margin-top: 4rem;">[BIOGRAPHY] // INVENTOR_PROFILE</div>
-                    <div class="bio-card tactical-border glow-card">
+                    <div class="bio-card tactical-border glow-card scroll-reveal">
                         <div class="bio-header">
                             <div class="bio-avatar">👩‍🔬</div>
                             <div class="bio-info">
                                 <h3 class="military-text gold-glow">STEPHANIE KWOLEK</h3>
-                                <p class="bio-subtitle">1923 – 2014 | Inventatoarea Kevlarului</p>
+                                <p class="bio-subtitle">1923 – 2014 | Inventor of Kevlar</p>
                             </div>
                         </div>
                         <div class="bio-content">
-                            <p>Stephanie Kwolek a devenit una dintre cele mai respectate figuri din istoria chimiei
-                                moderne. Numele ei apare pe <strong>17 brevete de invenție</strong>, iar pentru munca sa
-                                de pionierat a primit <strong>Medalia Națională pentru Tehnologie</strong>.</p>
-                            <p class="bio-quote">"Satisfacția de a ști că am contribuit la salvarea atâtor oameni este
-                                cea mai mare recompensă posibilă."</p>
+                            <p>Stephanie Kwolek became one of the most respected figures in the history of modern
+                                chemistry.
+                                Her name appears on <strong>17 invention patents</strong>, and for her pioneering work
+                                she
+                                received the <strong>National Medal for Technology</strong>.</p>
+                            <p class="bio-quote">"The satisfaction of knowing I contributed to saving so many people is
+                                the greatest possible reward."</p>
                             <div class="bio-stats">
                                 <div class="bio-stat">
                                     <span class="bio-stat-value gold">17</span>
-                                    <span class="bio-stat-label">Brevete</span>
+                                    <span class="bio-stat-label">Patents</span>
                                 </div>
                                 <div class="bio-stat">
                                     <span class="bio-stat-value cyan">40+</span>
-                                    <span class="bio-stat-label">Ani la DuPont</span>
+                                    <span class="bio-stat-label">Years at DuPont</span>
                                 </div>
                                 <div class="bio-stat">
                                     <span class="bio-stat-value gold">∞</span>
-                                    <span class="bio-stat-label">Vieți salvate</span>
+                                    <span class="bio-stat-label">Lives saved</span>
                                 </div>
                             </div>
                         </div>
@@ -1550,7 +1611,7 @@
                 </div>
 
                 <button id="close-timeline-btn" class="rgb-glow-btn secondary-btn" style="margin-top: 3rem;">
-                    <span class="btn-text">ÎNCHIDE TIMELINE</span>
+                    <span class="btn-text">CLOSE TIMELINE</span>
                     <span class="btn-glow"></span>
                     <span class="btn-rgb-border"></span>
                 </button>
@@ -1562,48 +1623,48 @@
         <section class="content-section specs-section">
             <div class="section-content">
                 <div class="data-stream">[SPECIFICATIONS] // TECHNICAL_DATA</div>
-                <h2 class="military-text section-title gold-glow">SPECIFICAȚII TEHNICE</h2>
+                <h2 class="military-text section-title gold-glow">TECHNICAL SPECIFICATIONS</h2>
 
                 <div class="specs-grid">
                     <div class="spec-category tactical-border">
-                        <h3 class="military-text category-title">PROPRIETĂȚI FIZICE</h3>
+                        <h3 class="military-text category-title">PHYSICAL PROPERTIES</h3>
                         <div class="spec-items">
                             <div class="spec-item">
-                                <span class="spec-name">Densitate</span>
+                                <span class="spec-name">Density</span>
                                 <span class="spec-value gold">1.44 g/cm³</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Rezistență la tracțiune</span>
+                                <span class="spec-name">Tensile strength</span>
                                 <span class="spec-value gold">3,620 MPa</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Modul de elasticitate</span>
+                                <span class="spec-name">Elastic modulus</span>
                                 <span class="spec-value gold">112 GPa</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Elongație la rupere</span>
+                                <span class="spec-name">Elongation at break</span>
                                 <span class="spec-value gold">3.6%</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Temperatură maximă</span>
+                                <span class="spec-name">Maximum temperature</span>
                                 <span class="spec-value gold">427°C</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="spec-category tactical-border">
-                        <h3 class="military-text category-title">PROTECȚIE BALISTICĂ</h3>
+                        <h3 class="military-text category-title">BALLISTIC PROTECTION</h3>
                         <div class="spec-items">
                             <div class="spec-item">
                                 <span class="spec-name">NIJ Level</span>
                                 <span class="spec-value cyan">IIIA+</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Viteză oprită</span>
+                                <span class="spec-name">Stopped velocity</span>
                                 <span class="spec-value cyan">490 m/s</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Calibre oprite</span>
+                                <span class="spec-name">Calibers stopped</span>
                                 <span class="spec-value cyan">.44 Magnum</span>
                             </div>
                             <div class="spec-item">
@@ -1618,26 +1679,26 @@
                     </div>
 
                     <div class="spec-category tactical-border">
-                        <h3 class="military-text category-title">APLICAȚII</h3>
+                        <h3 class="military-text category-title">APPLICATIONS</h3>
                         <div class="spec-items">
                             <div class="spec-item">
-                                <span class="spec-name">Veste antiglonț</span>
+                                <span class="spec-name">Bulletproof vests</span>
                                 <span class="spec-value gold">✓</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Căști balistice</span>
+                                <span class="spec-name">Ballistic helmets</span>
                                 <span class="spec-value gold">✓</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Blindaje vehicule</span>
+                                <span class="spec-name">Vehicle armor</span>
                                 <span class="spec-value gold">✓</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Protecție spațială</span>
+                                <span class="spec-name">Space protection</span>
                                 <span class="spec-value gold">✓</span>
                             </div>
                             <div class="spec-item">
-                                <span class="spec-name">Echipament tactic</span>
+                                <span class="spec-name">Tactical equipment</span>
                                 <span class="spec-value gold">✓</span>
                             </div>
                         </div>
@@ -1656,11 +1717,11 @@
                 <div class="data-stream">[STRESS_TEST] // MATERIAL_FAILURE_SIMULATION</div>
                 <h2 class="military-text section-title" style="color:#ff4444;text-shadow:0 0 30px rgba(255,68,68,0.8);">
                     💥 BREAK THE KEVLAR</h2>
-                <p class="section-subtitle">Simulare de rupere moleculară — poți distruge materialul?</p>
+                <p class="section-subtitle">Molecular fracture simulation — can you destroy the material?</p>
                 <div class="break-game-container tactical-border">
                     <div class="break-canvas-wrap">
                         <canvas id="break-canvas"></canvas>
-                        <div class="break-status" id="break-status">STRUCTURĂ INTACTĂ</div>
+                        <div class="break-status" id="break-status">STRUCTURE INTACT</div>
                         <div class="break-integrity-bar">
                             <div class="break-integrity-fill" id="break-fill"></div>
                             <span class="break-integrity-label" id="break-label">100%</span>
@@ -1668,13 +1729,13 @@
                     </div>
                     <div class="break-controls">
                         <div class="break-control-group">
-                            <label class="break-label-text">⚡ FORȚĂ MECANICĂ</label>
+                            <label class="break-label-text">⚡ MECHANICAL FORCE</label>
                             <input type="range" id="break-force" min="0" max="100" value="0"
                                 class="break-slider force-slider">
                             <span class="break-val" id="force-val">0 GPa</span>
                         </div>
                         <div class="break-control-group">
-                            <label class="break-label-text">🔥 TEMPERATURĂ</label>
+                            <label class="break-label-text">🔥 TEMPERATURE</label>
                             <input type="range" id="break-temp" min="-100" max="600" value="20"
                                 class="break-slider temp-slider">
                             <span class="break-val" id="temp-val">20°C</span>
@@ -1686,26 +1747,26 @@
                             <span class="break-val" id="ph-val">pH 7.0</span>
                         </div>
                         <div class="break-control-group">
-                            <label class="break-label-text">☀️ EXPUNERE UV (ore)</label>
+                            <label class="break-label-text">☀️ UV EXPOSURE (hours)</label>
                             <input type="range" id="break-uv" min="0" max="10000" value="0"
                                 class="break-slider uv-slider">
                             <span class="break-val" id="uv-val">0h</span>
                         </div>
                         <div class="break-stats-grid">
                             <div class="break-stat-card">
-                                <div class="bsc-label">RISC MECANIC</div>
+                                <div class="bsc-label">MECHANICAL RISK</div>
                                 <div class="bsc-val" id="bsv-force">0%</div>
                             </div>
                             <div class="break-stat-card">
-                                <div class="bsc-label">RISC TERMIC</div>
+                                <div class="bsc-label">THERMAL RISK</div>
                                 <div class="bsc-val" id="bsv-temp">0%</div>
                             </div>
                             <div class="break-stat-card">
-                                <div class="bsc-label">RISC CHIMIC</div>
+                                <div class="bsc-label">CHEMICAL RISK</div>
                                 <div class="bsc-val" id="bsv-chem">0%</div>
                             </div>
                             <div class="break-stat-card">
-                                <div class="bsc-label">RISC UV</div>
+                                <div class="bsc-label">UV RISK</div>
                                 <div class="bsc-val" id="bsv-uv">0%</div>
                             </div>
                         </div>
@@ -1719,31 +1780,31 @@
         </section>
 
         <!-- ══ BALLISTIC SCORE CALCULATOR ══ -->
-        <!-- ══ RESEARCH & SURSE STIINTIFICE ══ -->
+        <!-- ══ RESEARCH & SCIENTIFIC SOURCES ══ -->
         <section class="content-section research-section" id="research-section">
             <div class="section-content">
                 <div class="data-stream">[RESEARCH_DB] // SCIENTIFIC_LITERATURE_SCAN</div>
                 <h2 class="military-text section-title cyber-glow">🔬 RESEARCH DATABASE</h2>
-                <p class="section-subtitle">Formule stiintifice reale, scheme de reacție animate și lucrări de referință
+                <p class="section-subtitle">Real scientific formulas, animated reaction schemes and reference papers
                 </p>
 
                 <!-- Animated Reaction Scheme -->
                 <div class="reaction-lab-panel">
                     <div class="rlp-header">
-                        <div class="rlp-badge">⚗️ GRAFIC REACȚIE — Mw vs Conversie — Sinteza PPTA</div>
-                        <div class="rlp-live"><span class="live-dot"></span>LIVE ANIMAT</div>
+                        <div class="rlp-badge">⚗️ REACTION CHART — Mw vs Conversion — PPTA Synthesis</div>
+                        <div class="rlp-live"><span class="live-dot"></span>LIVE ANIMATED</div>
                     </div>
                     <!-- Real animated chart replacing the old particle sim -->
                     <div class="ppta-chart-wrap">
                         <canvas id="ppta-mw-chart"></canvas>
                         <div class="pcc-overlay" id="pcc-overlay">
-                            <div class="pcc-pill pcc-green">Creșterea masei moleculare</div>
-                            <div class="pcc-pill pcc-orange">Mw țintă simulator (50040 g/mol)</div>
+                            <div class="pcc-pill pcc-green">Molecular weight growth</div>
+                            <div class="pcc-pill pcc-orange">Simulator target Mw (50040 g/mol)</div>
                         </div>
-                        <div class="pcc-axis-x military-text">Conversia Monomerilor (%)</div>
-                        <div class="pcc-axis-y military-text">Masa Moleculară (g/mol)</div>
-                        <div class="pcc-title military-text">Grafic Real de Reacție: Masa Moleculară vs. Conversie în
-                            Sinteza PPTA</div>
+                        <div class="pcc-axis-x military-text">Monomer Conversion (%)</div>
+                        <div class="pcc-axis-y military-text">Molecular Weight (g/mol)</div>
+                        <div class="pcc-title military-text">Real Reaction Chart: Molecular Weight vs. Conversion in
+                            PPTA Synthesis</div>
                     </div>
                     <div class="reaction-eq-strip">
                         <span class="req-mono">n H₂N—C₆H₄—NH₂</span>
@@ -1756,13 +1817,13 @@
                     </div>
                     <div class="reaction-stats-row">
                         <div class="rsr-item"><span class="rsr-val" id="rs-temp">-10°C</span><span
-                                class="rsr-lbl">Temperatură</span></div>
+                                class="rsr-lbl">Temperature</span></div>
                         <div class="rsr-item"><span class="rsr-val" id="rs-mw">0</span><span class="rsr-lbl">Mw
                                 (g/mol)</span></div>
                         <div class="rsr-item"><span class="rsr-val" id="rs-conv">0%</span><span
-                                class="rsr-lbl">Conversie</span></div>
+                                class="rsr-lbl">Conversion</span></div>
                         <div class="rsr-item"><span class="rsr-val" id="rs-hcl">0 mol</span><span class="rsr-lbl">HCl
-                                eliminat</span></div>
+                                eliminated</span></div>
                         <div class="rsr-btn-wrap">
                             <button class="rsr-btn" id="rs-start">▶ START</button>
                             <button class="rsr-btn" id="rs-reset"
@@ -1779,8 +1840,8 @@
                         <canvas class="fholo-canvas" id="fhc-0"></canvas>
                         <div class="fholo-content">
                             <div class="fholo-id">F-001</div>
-                            <div class="fholo-category gold">MECANICĂ</div>
-                            <h4 class="fholo-title">REZISTENȚĂ LA TRACȚIUNE</h4>
+                            <div class="fholo-category gold">MECHANICS</div>
+                            <h4 class="fholo-title">TENSILE STRENGTH</h4>
                             <div class="fholo-eq">σ = E · ε</div>
                             <div class="fholo-vars">
                                 <div class="fv-row"><span class="fv-sym">σ<sub>max</sub></span><span
@@ -1790,7 +1851,7 @@
                                 <div class="fv-row"><span class="fv-sym">ε</span><span class="fv-eq">=</span><span
                                         class="fv-val">3.6%</span></div>
                             </div>
-                            <div class="fholo-verdict">5× mai rezistent decât oțelul la greutate egală</div>
+                            <div class="fholo-verdict">5× stronger than steel at equal weight</div>
                         </div>
                     </div>
                     <div class="fholo-card" data-formula="kinetic">
@@ -1799,7 +1860,7 @@
                         <div class="fholo-content">
                             <div class="fholo-id">F-002</div>
                             <div class="fholo-category cyan">BALISTICA</div>
-                            <h4 class="fholo-title">DISIPARE ENERGIE CINETICĂ</h4>
+                            <h4 class="fholo-title">KINETIC ENERGY DISSIPATION</h4>
                             <div class="fholo-eq">E<sub>k</sub> = <span class="frac-half"><sup>1</sup><span
                                         class="frac-div">/</span><sub>2</sub></span>mv<sup>2</sup></div>
                             <div class="fholo-vars">
@@ -1807,10 +1868,10 @@
                                         class="fv-val cyan">548 J</span></div>
                                 <div class="fv-row"><span class="fv-sym">Kevlar 20L</span><span
                                         class="fv-eq">→</span><span class="fv-val">~600 J</span></div>
-                                <div class="fv-row"><span class="fv-sym">Eficiență</span><span
+                                <div class="fv-row"><span class="fv-sym">Efficiency</span><span
                                         class="fv-eq">=</span><span class="fv-val">92–97%</span></div>
                             </div>
-                            <div class="fholo-verdict">Energie distribuită radial pe toată suprafața</div>
+                            <div class="fholo-verdict">Energy distributed radially across the entire surface</div>
                         </div>
                     </div>
                     <div class="fholo-card" data-formula="thermal">
@@ -1818,18 +1879,18 @@
                         <canvas class="fholo-canvas" id="fhc-2"></canvas>
                         <div class="fholo-content">
                             <div class="fholo-id">F-003</div>
-                            <div class="fholo-category gold">TERMICĂ</div>
-                            <h4 class="fholo-title">STABILITATE TERMICĂ</h4>
+                            <div class="fholo-category gold">THERMAL</div>
+                            <h4 class="fholo-title">THERMAL STABILITY</h4>
                             <div class="fholo-eq">T<sub>deg</sub> > 427°C</div>
                             <div class="fholo-vars">
-                                <div class="fv-row"><span class="fv-sym">T<sub>topire</sub></span><span
+                                <div class="fv-row"><span class="fv-sym">T<sub>melt</sub></span><span
                                         class="fv-eq">=</span><span class="fv-val gold">N/A</span></div>
                                 <div class="fv-row"><span class="fv-sym">LOI</span><span class="fv-eq">=</span><span
                                         class="fv-val">28–30%</span></div>
                                 <div class="fv-row"><span class="fv-sym">-CONH-</span><span class="fv-eq">→</span><span
-                                        class="fv-val">STABIL</span></div>
+                                        class="fv-val">STABLE</span></div>
                             </div>
-                            <div class="fholo-verdict">Carbonizare directă fără topire — nu se aprinde</div>
+                            <div class="fholo-verdict">Direct carbonization without melting — does not ignite</div>
                         </div>
                     </div>
                     <div class="fholo-card" data-formula="crystal">
@@ -1837,18 +1898,18 @@
                         <canvas class="fholo-canvas" id="fhc-3"></canvas>
                         <div class="fholo-content">
                             <div class="fholo-id">F-004</div>
-                            <div class="fholo-category cyan">CRISTAL</div>
-                            <h4 class="fholo-title">STRUCTURA CRISTALINĂ</h4>
+                            <div class="fholo-category cyan">CRYSTAL</div>
+                            <h4 class="fholo-title">CRYSTALLINE STRUCTURE</h4>
                             <div class="fholo-eq">d = 3.7Å</div>
                             <div class="fholo-vars">
-                                <div class="fv-row"><span class="fv-sym">Cristalinitate</span><span
+                                <div class="fv-row"><span class="fv-sym">Crystallinity</span><span
                                         class="fv-eq">=</span><span class="fv-val cyan">70–75%</span></div>
-                                <div class="fv-row"><span class="fv-sym">Orientare</span><span
+                                <div class="fv-row"><span class="fv-sym">Orientation</span><span
                                         class="fv-eq">></span><span class="fv-val">95%</span></div>
                                 <div class="fv-row"><span class="fv-sym">ρ</span><span class="fv-eq">=</span><span
                                         class="fv-val">1.44 g/cm³</span></div>
                             </div>
-                            <div class="fholo-verdict">Lanțuri aliniate prin H-bonds — structură paralelă</div>
+                            <div class="fholo-verdict">Chains aligned via H-bonds — parallel structure</div>
                         </div>
                     </div>
                 </div>
@@ -1856,7 +1917,7 @@
                 <!-- Scientific Papers — Classified Files -->
                 <div class="classified-header">
                     <div class="ch-line"></div>
-                    <div class="ch-title">📁 DOCUMENTE DECLASIFICATE — LUCRARI STIINTIFICE</div>
+                    <div class="ch-title">📁 DECLASSIFIED DOCUMENTS — SCIENTIFIC PAPERS</div>
                     <div class="ch-line"></div>
                 </div>
                 <div class="classified-papers">
@@ -1870,9 +1931,9 @@
                             <div class="cp-title">Synthesis of Poly(p-phenylene terephthalamide)</div>
                             <div class="cp-author">Kwolek, S.L. — DuPont de Nemours & Co.</div>
                             <div class="cp-journal">US Patent 3,287,323 · Journal of Polymer Science A</div>
-                            <div class="cp-abstract">Prima sinteză documentată a polimerului PPTA din soluție anizotropă
-                                liotroapă. Descoperire accidentală — soluția tulbure a dus la fibre de 5× rezistența
-                                oțelului.</div>
+                            <div class="cp-abstract">First documented synthesis of PPTA polymer from lyotropic
+                                anisotropic solution. Accidental discovery — the cloudy solution led to fibers 5× the
+                                strength of steel.</div>
                             <div class="cp-tags"><span class="cpt gold">PPTA</span><span
                                     class="cpt gold">PATENT</span><span class="cpt gold">KWOLEK</span></div>
                         </div>
@@ -1888,10 +1949,11 @@
                             <div class="cp-title">Ballistic Performance of Kevlar® in Multi-Layer Systems</div>
                             <div class="cp-author">Cunniff, P.M. — US Army Research Laboratory, Aberdeen MD</div>
                             <div class="cp-journal">Textile Research Journal, Vol. 55(5), pp. 283-291</div>
-                            <div class="cp-abstract">Modele numerice de penetrare și comportament balistic al sistemelor
-                                multi-strat Kevlar. Include analiza BFD (Backface Deformation) și conformanță NIJ.</div>
+                            <div class="cp-abstract">Numerical models of penetration and ballistic behavior of
+                                multi-layer Kevlar systems. Includes BFD (Backface Deformation) analysis and NIJ
+                                compliance.</div>
                             <div class="cp-tags"><span class="cpt cyan">NIJ IIIA</span><span
-                                    class="cpt cyan">MULTI-STRAT</span><span class="cpt cyan">ARMY</span></div>
+                                    class="cpt cyan">MULTI-LAYER</span><span class="cpt cyan">ARMY</span></div>
                         </div>
                         <div class="cp-scanline"></div>
                     </div>
@@ -1905,9 +1967,9 @@
                             <div class="cp-title">Molecular Dynamics Simulation of Kevlar Fiber Under Tensile Load</div>
                             <div class="cp-author">Grujicic, M. et al. — Clemson University, Dept. Materials Sci.</div>
                             <div class="cp-journal">Journal of Materials Science, 38(4), pp. 3949–3964</div>
-                            <div class="cp-abstract">Simulare MD a comportamentului molecular al fibrei Kevlar sub
-                                sarcini tensile extreme. Validare experimentală la 99.2% acuratețe. Model AMBER
-                                force-field.</div>
+                            <div class="cp-abstract">MD simulation of the molecular behavior of Kevlar fiber under
+                                extreme tensile loads. Experimental validation at 99.2% accuracy. AMBER force-field
+                                model.</div>
                             <div class="cp-tags"><span class="cpt gold">MOLECULAR DYNAMICS</span><span
                                     class="cpt gold">TENSILE</span><span class="cpt gold">FEM</span></div>
                         </div>
@@ -1924,11 +1986,11 @@
                                 Review</div>
                             <div class="cp-author">Militky, J., Jabbar, A. — Technical University of Liberec, CZ</div>
                             <div class="cp-journal">Polymers, 11(8), article 1324. DOI: 10.3390/polym11081324</div>
-                            <div class="cp-abstract">Analiză completă a mecanismelor foto-oxidative de degradare UV în
-                                fibrele para-aramidice. Include soluții de stabilizare prin nano-coating TiO₂ și
-                                UV-absorbanți.</div>
+                            <div class="cp-abstract">Comprehensive analysis of photo-oxidative UV degradation mechanisms
+                                in para-aramid fibers. Includes stabilization solutions via TiO₂ nano-coating and UV
+                                absorbers.</div>
                             <div class="cp-tags"><span class="cpt cyan">UV</span><span
-                                    class="cpt cyan">DEGRADARE</span><span class="cpt cyan">TiO₂</span></div>
+                                    class="cpt cyan">DEGRADATION</span><span class="cpt cyan">TiO₂</span></div>
                         </div>
                         <div class="cp-scanline"></div>
                     </div>
@@ -1940,8 +2002,8 @@
         <section class="content-section lab-section" id="lab-section">
             <div class="section-content">
                 <div class="data-stream">[VIRTUAL_LAB] // POLYMERIZATION_SIMULATION_ENGINE v4.2</div>
-                <h2 class="military-text section-title rgb-text">🧬 LABORATOR VIRTUAL — SINTEZĂ KEVLAR</h2>
-                <p class="section-subtitle">Motor de simulare moleculară în timp real — sintetizează PPTA pas cu pas</p>
+                <h2 class="military-text section-title rgb-text">🧬 VIRTUAL LAB — KEVLAR SYNTHESIS</h2>
+                <p class="section-subtitle">Real-time molecular simulation engine — synthesize PPTA step by step</p>
 
                 <div class="mega-lab">
                     <!-- Left: Control Panel -->
@@ -1960,7 +2022,7 @@
                             </div>
                             <div class="lab-gauge" id="gauge-press">
                                 <canvas class="gauge-canvas" id="gc-press" width="90" height="90"></canvas>
-                                <div class="gauge-label">PRESIUNE</div>
+                                <div class="gauge-label">PRESSURE</div>
                                 <div class="gauge-val" id="gv-press">1.0 atm</div>
                             </div>
                             <div class="lab-gauge" id="gauge-ph">
@@ -1975,7 +2037,7 @@
                             <div class="lsc-step" id="sc-step-1">
                                 <div class="lsc-num">01</div>
                                 <div class="lsc-info">
-                                    <div class="lsc-title military-text gold">MIX MONOMERI</div>
+                                    <div class="lsc-title military-text gold">MIX MONOMERS</div>
                                     <div class="lsc-desc">PPD + TCl → NMP solvent, -10°C</div>
                                 </div>
                                 <button class="lsc-btn" id="lsc-1">▶ RUN</button>
@@ -1986,7 +2048,7 @@
                             <div class="lsc-step locked" id="sc-step-2">
                                 <div class="lsc-num">02</div>
                                 <div class="lsc-info">
-                                    <div class="lsc-title military-text cyan">POLIMERIZARE</div>
+                                    <div class="lsc-title military-text cyan">POLYMERIZATION</div>
                                     <div class="lsc-desc">80°C, -2n HCl, Mw → 50k</div>
                                 </div>
                                 <button class="lsc-btn" id="lsc-2" disabled>🔒</button>
@@ -1997,7 +2059,7 @@
                             <div class="lsc-step locked" id="sc-step-3">
                                 <div class="lsc-num">03</div>
                                 <div class="lsc-info">
-                                    <div class="lsc-title military-text gold">FILARE</div>
+                                    <div class="lsc-title military-text gold">SPINNING</div>
                                     <div class="lsc-desc">H₂SO₄ 100%, extrudare axială</div>
                                 </div>
                                 <button class="lsc-btn" id="lsc-3" disabled>🔒</button>
@@ -2008,7 +2070,7 @@
                             <div class="lsc-step locked" id="sc-step-4">
                                 <div class="lsc-num">04</div>
                                 <div class="lsc-info">
-                                    <div class="lsc-title military-text cyan">TEST TENSIL</div>
+                                    <div class="lsc-title military-text cyan">TENSILE TEST</div>
                                     <div class="lsc-desc">σ target ≥ 3,620 MPa</div>
                                 </div>
                                 <button class="lsc-btn" id="lsc-4" disabled>🔒</button>
@@ -2022,11 +2084,11 @@
                         <div class="lab-view-modes">
                             <div class="lvm-label military-text"
                                 style="font-size:0.6rem;letter-spacing:2px;color:rgba(255,255,255,0.3);margin-bottom:8px;">
-                                MOD VIZUALIZARE</div>
+                                VISUALIZATION MODE</div>
                             <div class="lvm-btns">
                                 <button class="lvm-btn active" id="lvm-mol" data-mode="mol">⚛ MOLECULAR</button>
-                                <button class="lvm-btn" id="lvm-chain" data-mode="chain">🔗 LANȚURI</button>
-                                <button class="lvm-btn" id="lvm-fiber" data-mode="fiber">🧵 FIBRA</button>
+                                <button class="lvm-btn" id="lvm-chain" data-mode="chain">🔗 CHAINS</button>
+                                <button class="lvm-btn" id="lvm-fiber" data-mode="fiber">🧵 FIBER</button>
                                 <button class="lvm-btn" id="lvm-stress" data-mode="stress">💥 STRESS</button>
                             </div>
                         </div>
@@ -2035,7 +2097,7 @@
                         <div class="lab-terminal" id="lab-terminal">
                             <div class="lt-header">// TERMINAL OUTPUT</div>
                             <div class="lt-lines" id="lt-lines">
-                                <div class="lt-line"><span class="lt-t">[00:00]</span> Sistem inițializat. Așteptând...
+                                <div class="lt-line"><span class="lt-t">[00:00]</span> System initialized. Waiting...
                                 </div>
                             </div>
                         </div>
@@ -2049,7 +2111,7 @@
                         </div>
                         <canvas id="lab-main-canvas"></canvas>
                         <div class="lmd-overlay" id="lmd-overlay">
-                            <div class="lmd-step-info" id="lmd-step-info">PAS 1 / 4</div>
+                            <div class="lmd-step-info" id="lmd-step-info">STEP 1 / 4</div>
                             <div class="lmd-progress-ring">
                                 <svg width="80" height="80" viewBox="0 0 80 80">
                                     <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,0.05)"
@@ -2067,11 +2129,11 @@
                         <div class="ldp-header military-text">DATA STREAM</div>
                         <div class="ldp-stats">
                             <div class="ldp-stat">
-                                <div class="ldps-label">MONOMERI ACTIVI</div>
+                                <div class="ldps-label">ACTIVE MONOMERS</div>
                                 <div class="ldps-val" id="ldp-monomers">0</div>
                             </div>
                             <div class="ldp-stat">
-                                <div class="ldps-label">LANȚURI FORMATE</div>
+                                <div class="ldps-label">CHAINS FORMED</div>
                                 <div class="ldps-val cyan" id="ldp-chains">0</div>
                             </div>
                             <div class="ldp-stat">
@@ -2079,29 +2141,29 @@
                                 <div class="ldps-val gold" id="ldp-mw">—</div>
                             </div>
                             <div class="ldp-stat">
-                                <div class="ldps-label">CONVERSIE %</div>
+                                <div class="ldps-label">CONVERSION %</div>
                                 <div class="ldps-val" id="ldp-conv">0%</div>
                             </div>
                             <div class="ldp-stat">
-                                <div class="ldps-label">HCl ELIMINAT</div>
+                                <div class="ldps-label">HCl ELIMINATED</div>
                                 <div class="ldps-val" id="ldp-hcl">0 mol</div>
                             </div>
                             <div class="ldp-stat">
-                                <div class="ldps-label">REZISTENȚĂ</div>
+                                <div class="ldps-label">STRENGTH</div>
                                 <div class="ldps-val gold" id="ldp-str">—</div>
                             </div>
                         </div>
                         <div class="ldp-chart-wrap">
-                            <div class="ldpc-label">CONVERSIE ÎN TIMP</div>
+                            <div class="ldpc-label">CONVERSION OVER TIME</div>
                             <canvas id="lab-chart" width="200" height="80"></canvas>
                         </div>
                         <div class="ldp-molecule-info" id="ldp-mol-info">
-                            <div class="ldpmi-title">INFORMAȚII MOLECULARE</div>
-                            <div class="ldpmi-content">Kevlarul (PPTA) este un polimer aromatic de tip poliamidă.
-                                Fiecare unitate repetativă conține două inele benzenice legate prin grupuri amidice
+                            <div class="ldpmi-title">MOLECULAR INFORMATION</div>
+                            <div class="ldpmi-content">Kevlar (PPTA) is an aromatic polyamide-type polymer.
+                                Each repeating unit contains two benzene rings linked through amide groups
                                 (-CONH-).</div>
                         </div>
-                        <button class="lab-reset-btn" id="lab-full-reset">🔄 RESET COMPLET</button>
+                        <button class="lab-reset-btn" id="lab-full-reset">🔄 FULL RESET</button>
                     </div>
                 </div>
             </div>
@@ -3132,49 +3194,49 @@
                     <div class="kc-title">KEVLAR // AI TACTICAL</div>
                 </div>
                 <div class="kc-topright">
-                    <div class="kc-status">SISTEM <span>● ENGAGED</span></div>
+                    <div class="kc-status">SYSTEM <span>● ENGAGED</span></div>
                     <button class="kc-closebtn" onclick="kcToggle()">✕</button>
                 </div>
             </div>
             <div class="kc-marquee">
                 <span class="kc-marq-inner">
                     [KEVLAR_AI_INIT] // PARA_ARAMID_DB: <span>LOADED</span> // K29_K49_K129_K149: <span>INDEXED</span>
-                    // DuPont™ // <span>3,620 MPa</span> // 5X vs OȚEL // NIJ_IIIA: <span>CONFIRMED</span> //
+                    // DuPont™ // <span>3,620 MPa</span> // 5X vs STEEL // NIJ_IIIA: <span>CONFIRMED</span> //
                     STEPHANIE_KWOLEK_1965 // BALLISTIC_CORE: <span>READY</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     [KEVLAR_AI_INIT] // PARA_ARAMID_DB: <span>LOADED</span> // K29_K49_K129_K149: <span>INDEXED</span>
-                    // DuPont™ // <span>3,620 MPa</span> // 5X vs OȚEL // NIJ_IIIA: <span>CONFIRMED</span> //
+                    // DuPont™ // <span>3,620 MPa</span> // 5X vs STEEL // NIJ_IIIA: <span>CONFIRMED</span> //
                     STEPHANIE_KWOLEK_1965 // BALLISTIC_CORE: <span>READY</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </span>
             </div>
             <div class="kc-msgs" id="kcMsgs">
                 <div class="kc-msg kc-ai">
                     <div class="kc-meta">
-                        <div class="kc-tag">KEVLAR_AI</div> INIȚIALIZAT
+                        <div class="kc-tag">KEVLAR_AI</div> INITIALIZED
                     </div>
                     <div class="kc-bubble">
-                        <strong>[BAZA DE DATE KEVLAR ACTIVĂ]</strong><br><br>
-                        Inteligența <strong>KEVLAR AI</strong> este pornită. Fibra para-aramidică inventată de
-                        <strong>Stephanie Kwolek</strong> la DuPont în 1965 — de 5× mai rezistentă decât oțelul.<br><br>
-                        Selectează un topic sau scrie orice întrebare despre Kevlar.
+                        <strong>[KEVLAR DATABASE ACTIVE]</strong><br><br>
+                        <strong>KEVLAR AI</strong> intelligence is online. The para-aramid fiber invented by
+                        <strong>Stephanie Kwolek</strong> at DuPont in 1965 — 5× stronger than steel.<br><br>
+                        Select a topic or type any question about Kevlar.
                     </div>
                 </div>
             </div>
             <div class="kc-chips" id="kcChips">
-                <button class="kc-chip" onclick="kcQ('Explică structura moleculară a Kevlarului')">// CHIMIE</button>
-                <button class="kc-chip" onclick="kcQ('Ce tipuri de Kevlar există? K-29, K-49, K-149...')">//
-                    TIPURI</button>
-                <button class="kc-chip" onclick="kcQ('Cum funcționează vesta antiglonț din Kevlar?')">//
-                    BALISTIC</button>
-                <button class="kc-chip" onclick="kcQ('Cum se produce Kevlarul la nivel industrial?')">//
-                    PRODUCȚIE</button>
-                <button class="kc-chip" onclick="kcQ('Povestea descoperirii Kevlarului')">// ISTORIE</button>
-                <button class="kc-chip" onclick="kcQ('Care sunt dezavantajele și limitele Kevlarului?')">//
-                    LIMITE</button>
-                <button class="kc-chip" onclick="kcQ('Kevlar vs oțel vs Dyneema — comparație')">// VS</button>
+                <button class="kc-chip" onclick="kcQ('Explain the molecular structure of Kevlar')">// CHEMISTRY</button>
+                <button class="kc-chip" onclick="kcQ('What types of Kevlar exist? K-29, K-49, K-149...')">//
+                    TYPES</button>
+                <button class="kc-chip" onclick="kcQ('How does a Kevlar bulletproof vest work?')">//
+                    BALLISTIC</button>
+                <button class="kc-chip" onclick="kcQ('How is Kevlar produced at an industrial level?')">//
+                    PRODUCTION</button>
+                <button class="kc-chip" onclick="kcQ('The story of Kevlar discovery')">// HISTORY</button>
+                <button class="kc-chip" onclick="kcQ('What are the disadvantages and limits of Kevlar?')">//
+                    LIMITS</button>
+                <button class="kc-chip" onclick="kcQ('Kevlar vs steel vs Dyneema — comparison')">// VS</button>
             </div>
             <div class="kc-input-row">
                 <div class="kc-prefix">&gt;_</div>
-                <textarea class="kc-inp" id="kcInp" placeholder="INTRODUCEȚI INTEROGAREA..." rows="1"
+                <textarea class="kc-inp" id="kcInp" placeholder="ENTER YOUR QUERY..." rows="1"
                     onkeydown="kcHandleKey(event)" oninput="kcResize(this)"></textarea>
                 <button class="kc-sbtn" id="kcSbtn" onclick="kcSend()">SEND &gt;&gt;</button>
             </div>
@@ -3188,17 +3250,17 @@
     <script>
         /* ── KEVLAR AI CHATBOT ENGINE ── */
         const KC_KB = [
-            { keys: ['istoric', 'istorie', 'kwolek', 'descoperi', 'inventat', '1965', 'origine', 'cum a aparut'], r: `Povestea Kevlarului începe în **1965**, când chimista **Stephanie Kwolek** de la DuPont a sintetizat o soluție ciudată — tulbure, fluidă ca apa — pe care echipa voia să o arunce. Ea a insistat să o testeze.\n\nRezultatul: fibra era de **5 ori mai rezistentă decât oțelul** la aceeași greutate. Nimeni nu mai văzuse asta.\n\n**1971** — producție comercială. **1975** — prima vestă antiglonț salvează prima viață. **1988** — Kevlarul ajunge pe **ISS** ca scut anti-deșeuri orbitale. Kwolek e în National Inventors Hall of Fame din 1994.` },
-            { keys: ['chimie', 'molecul', 'structur', 'ppta', 'polimer', 'formula', 'chimic', 'aramid'], r: `Chimic se numește **poli-para-fenilen-tereftalamidă (PPTA)**. Secretul stă în cuvântul **"para"**: legăturile amidice (CO−NH) sunt atașate în pozițiile opuse ale inelelor benzenice — lanțul e perfect drept, ca niște bețe de chibrit.\n\nLanțurile adiacente formează o rețea densă de **punți de hidrogen** — se țin strâns unul de altul. O fibră subțire ca un fir de păr poate opri un glonț.\n\nComparativ, **Nomex** (meta-aramid) are legăturile în unghi → rezistență scade la ~340 MPa față de **3,620 MPa** la Kevlar.` },
-            { keys: ['tipuri', 'tip', 'k-29', 'k-49', 'k29', 'k49', 'k149', 'km2', 'versiuni', 'grade'], r: `Kevlarul nu e un singur material — există mai multe grade:\n\n**Kevlar 29** — clasic, baza vestelor antiglonț. Modul 70 GPa.\n**Kevlar 49** — rigid (135 GPa), aviație și marină.\n**Kevlar 129** — upgrade balistic serios, 3.4 GPa. Căști militare.\n**Kevlar 149** — cel mai rigid, 143–186 GPa. Strict aerospațial.\n**Kevlar KM2** — special pentru fragmente de șrapnel, 3.8 GPa.\n**KM2 Plus (seria 775)** — generația actuală US Army. Aceeași protecție cu **35% mai puțin material**.\n**Kevlar KXP** — versiunea flexibilă modernă.` },
-            { keys: ['proprietati', 'mecanic', 'rezistenta', 'mpa', 'gpa', 'densitate', 'greutate'], r: `Cifrele concrete:\n\n**Densitate** — 1.44 g/cm³. Oțelul e 7.85 g/cm³ → Kevlarul e de **5.5× mai ușor**.\n**Rezistență la tracțiune** — **3,620 MPa**.\n**Modul de elasticitate** — între 70 GPa (K-29) și 186 GPa (K-149).\n**Fluaj** — sub **0.03%** la sarcini de 40–48% din maxim. Nu se deformează în timp, spre deosebire de Dyneema.\n\nPe scurt: de **5× mai rezistent decât oțelul** la aceeași greutate.` },
-            { keys: ['termic', 'temperatura', 'caldura', 'foc', 'arde', 'ardere', 'descompunere'], r: `Kevlarul **nu se topește** — se descompune direct la **425–480°C**. Indicele limită de oxigen (LOI 29%) înseamnă că nu susține combustia ușor.\n\nFact surprinzător: la **-196°C** (azot lichid) devine chiar *mai rezistent*. Ideal pentru aplicații spațiale și criogenice.\n\nConductivitate termică: **0.04 W/(m·K)** — practic izolator termic.` },
-            { keys: ['balistic', 'glont', 'vesta', 'vest', 'antiglont', 'protectie', 'impact', 'nij'], r: `Vesta antiglonț nu "respinge" glonțul — îl **oprește prin distribuirea energiei**:\n\n1. Glonțul deformează straturile împletite de fibră\n2. Energia cinetică se transmite lateral pe **sute de filamente simultan**\n3. Fibra se elonghează ușor, absorbind energia\n4. Impactul se distribuie pe o zonă mare\n\n**NIJ IIIA** = oprește un **.44 Magnum la 490 m/s**, cu adâncitură de max 44mm.\n**KM2 Plus** — aceeași protecție cu **35% mai puțin material**.` },
-            { keys: ['produc', 'fabric', 'sintez', 'produce', 'cum se face', 'industrial', 'proces'], r: `**Pasul 1 — Sinteza:** 1,4-fenilendiamină + clorură de tereftaloil → polimer PPTA la temperaturi joase.\n\n**Pasul 2 — Filarea:** Polimerul e dizolvat în **acid sulfuric concentrat** (singurul solvent). Se comportă ca un cristal lichid — moleculele se aliniază spontan la extrudare.\n\n**Pasul 3 — Tratamentul termic:** Kwolek a descoperit că încălzirea crește dramatic rezistența. Asta diferențiază gradele — K-29 vs K-149 e același polimer, tratat diferit.\n\nProducători: **DuPont** (Virginia), **Twaron** (Teijin, Japonia), **Heracron** (Kolon, Coreea).` },
-            { keys: ['dezavantaj', 'limit', 'slab', 'problem', 'uv', 'soare', 'umiditate', 'apa'], r: `Punctele slabe ale Kevlarului:\n\n**UV** — principalul inamic. La 1000h expunere accelerată pierde **10–20%** din rezistență. Soluție: aditivi UVA + tratamente.\n\n**Apă** — absoarbe **5–7%** din greutate. Reduce rezistența și devine conductiv electric. Soluție: mantale din poliuretan.\n\n**Compresie** — excelent la tracțiune, slab la forțe de compresie longitudinală.\n\n**Tăierea** — necesită scule speciale. Aderență slabă la vopsele.\n\nDe aceea vestele balistice au huse impermeabile și se înlocuiesc la 5–7 ani.` },
-            { keys: ['vs', 'comparati', 'dyneema', 'otel', 'carbon', 'compara'], r: `| Material | Densitate | Rezistență | Topire |\n|---|---|---|---|\n| **Kevlar** | 1.44 g/cm³ | 3.6 GPa | 425°C+ |\n| Dyneema | 0.97 g/cm³ | ~3.0 GPa | **150°C** |\n| Carbon | 1.79 g/cm³ | 5.49 GPa | Extrem |\n| Oțel | 7.85 g/cm³ | 1.0–2.0 GPa | 1400°C+ |\n\n**vs Dyneema:** Plutește, mai ușoară, dar se topește la 150°C și se întinde ireversibil în timp.\n**vs Carbon:** Carbon mai rigid, dar **fragil la impact**. Kevlarul absoarbe energia.\n**vs Oțel:** Kevlarul e 5× mai rezistent la aceeași masă și nu corodează.` },
-            { keys: ['spatiu', 'nasa', 'iss', 'mars', 'satellite'], r: `Kevlarul e pe **Stația Spațială ISS** ca scut anti-micrometeorite — particule la 15 km/s sunt transformate în plasmă de un strat de aluminiu, iar Kevlarul reține totul.\n\n**Mars Pathfinder (1997):** Pernele gonflabile de aterizare erau cusute din Kevlar — roverul a ricoșat de mai multe ori pe solul marțian fără daune.\n\n**Perseverance (2020):** Conține eșantioane de Kevlar expuse direct mediului marțian — NASA testează materialul pentru viitoarele costume spațiale umane.` },
-            { keys: ['ce este', 'ce e', 'despre', 'kevlar', 'prezinta', 'explica', 'general'], r: `Kevlarul e probabil cel mai important material sintetic al secolului XX.\n\nChimic: **poli-para-fenilen-tereftalamidă (PPTA)** — descoperit în **1965** de **Stephanie Kwolek** la DuPont, aproape din greșeală.\n\n**De ce e special?**\n— Densitate: **1.44 g/cm³** (de 6× mai ușor decât oțelul)\n— Rezistență: **3,620 MPa** — de **5× mai mare** decât oțelul la aceeași greutate\n— Nu se topește — se descompune la **425–480°C**\n— La -196°C devine *mai rezistent*\n\nÎl găsești în veste antiglonț, pe ISS, în cablurile submarine ale internetului global, în anvelope F1, și pe Marte.` },
+            { keys: ['history', 'historic', 'kwolek', 'discover', 'invented', '1965', 'origin', 'how it started'], r: `The story of Kevlar begins in **1965**, when chemist **Stephanie Kwolek** at DuPont synthesized a strange solution — cloudy, fluid as water — which her team wanted to discard. She insisted on testing it.\n\nThe result: the fiber was **5 times stronger than steel** at the same weight. Nobody had ever seen that.\n\n**1971** — commercial production. **1975** — the first bulletproof vest saves the first life. **1988** — Kevlar reaches the **ISS** as an anti-orbital-debris shield. Kwolek was inducted into the National Inventors Hall of Fame in 1994.` },
+            { keys: ['chemistry', 'molecul', 'structur', 'ppta', 'polymer', 'formula', 'chemical', 'aramid'], r: `Chemically known as **poly-para-phenylene terephthalamide (PPTA)**. The secret lies in the word **"para"**: the amide bonds (CO−NH) are attached at opposite positions of the benzene rings — the chain is perfectly straight, like matchsticks.\n\nAdjacent chains form a dense network of **hydrogen bonds** — they hold tightly to each other. A fiber as thin as a hair can stop a bullet.\n\nComparatively, **Nomex** (meta-aramid) has angled bonds → strength drops to ~340 MPa vs **3,620 MPa** for Kevlar.` },
+            { keys: ['types', 'type', 'k-29', 'k-49', 'k29', 'k49', 'k149', 'km2', 'versions', 'grade'], r: `Kevlar is not a single material — there are multiple grades:\n\n**Kevlar 29** — classic, base for bulletproof vests. Modulus 70 GPa.\n**Kevlar 49** — rigid (135 GPa), aviation and marine.\n**Kevlar 129** — serious ballistic upgrade, 3.4 GPa. Military helmets.\n**Kevlar 149** — the most rigid, 143–186 GPa. Strictly aerospace.\n**Kevlar KM2** — special for shrapnel fragments, 3.8 GPa.\n**KM2 Plus (series 775)** — current US Army generation. Same protection with **35% less material**.\n**Kevlar KXP** — modern flexible version.` },
+            { keys: ['properties', 'mechanic', 'strength', 'mpa', 'gpa', 'density', 'weight'], r: `The concrete numbers:\n\n**Density** — 1.44 g/cm³. Steel is 7.85 g/cm³ → Kevlar is **5.5× lighter**.\n**Tensile strength** — **3,620 MPa**.\n**Elastic modulus** — between 70 GPa (K-29) and 186 GPa (K-149).\n**Creep** — under **0.03%** at loads of 40–48% of maximum. Does not deform over time, unlike Dyneema.\n\nIn short: **5× stronger than steel** at the same weight.` },
+            { keys: ['thermal', 'temperature', 'heat', 'fire', 'burn', 'burning', 'decomposition'], r: `Kevlar **does not melt** — it decomposes directly at **425–480°C**. The limiting oxygen index (LOI 29%) means it doesn't easily sustain combustion.\n\nSurprising fact: at **-196°C** (liquid nitrogen) it actually becomes *more resistant*. Ideal for space and cryogenic applications.\n\nThermal conductivity: **0.04 W/(m·K)** — practically a thermal insulator.` },
+            { keys: ['ballistic', 'bullet', 'vest', 'bulletproof', 'protection', 'impact', 'nij'], r: `A bulletproof vest doesn't "repel" the bullet — it **stops it by distributing energy**:\n\n1. The bullet deforms the woven fiber layers\n2. Kinetic energy is transferred laterally across **hundreds of filaments simultaneously**\n3. The fiber elongates slightly, absorbing energy\n4. The impact is distributed over a large area\n\n**NIJ IIIA** = stops a **.44 Magnum at 490 m/s**, with a max 44mm indentation.\n**KM2 Plus** — same protection with **35% less material**.` },
+            { keys: ['produc', 'fabric', 'synthes', 'produce', 'how it is made', 'industrial', 'process'], r: `**Step 1 — Synthesis:** 1,4-phenylenediamine + terephthaloyl chloride → PPTA polymer at low temperatures.\n\n**Step 2 — Spinning:** The polymer is dissolved in **concentrated sulfuric acid** (the only solvent). It behaves like a liquid crystal — molecules align spontaneously during extrusion.\n\n**Step 3 — Heat treatment:** Kwolek discovered that heating dramatically increases strength. This differentiates the grades — K-29 vs K-149 is the same polymer, treated differently.\n\nManufacturers: **DuPont** (Virginia), **Twaron** (Teijin, Japan), **Heracron** (Kolon, Korea).` },
+            { keys: ['disadvantage', 'limit', 'weak', 'problem', 'uv', 'sun', 'moisture', 'water'], r: `Kevlar's weak points:\n\n**UV** — the main enemy. At 1000h accelerated exposure it loses **10–20%** of strength. Solution: UVA additives + treatments.\n\n**Water** — absorbs **5–7%** of its weight. Reduces strength and becomes electrically conductive. Solution: polyurethane sheaths.\n\n**Compression** — excellent in tension, weak under longitudinal compressive forces.\n\n**Cutting** — requires special tools. Poor adhesion to paints.\n\nThat's why ballistic vests have waterproof covers and are replaced every 5–7 years.` },
+            { keys: ['vs', 'compare', 'dyneema', 'steel', 'carbon', 'comparison'], r: `| Material | Density | Strength | Melting |\n|---|---|---|---|\n| **Kevlar** | 1.44 g/cm³ | 3.6 GPa | 425°C+ |\n| Dyneema | 0.97 g/cm³ | ~3.0 GPa | **150°C** |\n| Carbon | 1.79 g/cm³ | 5.49 GPa | Extreme |\n| Steel | 7.85 g/cm³ | 1.0–2.0 GPa | 1400°C+ |\n\n**vs Dyneema:** Floats, lighter, but melts at 150°C and irreversibly stretches over time.\n**vs Carbon:** Carbon is stiffer, but **brittle on impact**. Kevlar absorbs energy.\n**vs Steel:** Kevlar is 5× stronger at the same mass and doesn't corrode.` },
+            { keys: ['space', 'nasa', 'iss', 'mars', 'satellite'], r: `Kevlar is on the **ISS Space Station** as an anti-micrometeorite shield — particles at 15 km/s are turned into plasma by an aluminum layer, while Kevlar retains everything.\n\n**Mars Pathfinder (1997):** The inflatable landing airbags were sewn from Kevlar — the rover bounced multiple times on Martian soil without damage.\n\n**Perseverance (2020):** Contains Kevlar samples directly exposed to the Martian environment — NASA is testing the material for future human spacesuits.` },
+            { keys: ['what is', 'about', 'kevlar', 'explain', 'general'], r: `Kevlar is arguably the most important synthetic material of the 20th century.\n\nChemically: **poly-para-phenylene terephthalamide (PPTA)** — discovered in **1965** by **Stephanie Kwolek** at DuPont, almost by accident.\n\n**Why is it special?**\n— Density: **1.44 g/cm³** (6× lighter than steel)\n— Strength: **3,620 MPa** — **5× greater** than steel at the same weight\n— Does not melt — decomposes at **425–480°C**\n— At -196°C it becomes *more resistant*\n\nYou'll find it in bulletproof vests, on the ISS, in submarine cables of the global internet, in F1 tires, and on Mars.` },
         ];
         function kcGetReply(msg) {
             const raw = msg.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
@@ -3219,11 +3281,11 @@
                 if (score > bestScore) { bestScore = score; best = e; }
             }
             if (best && bestScore > 0) return best.r;
-            return `Nu am găsit exact asta în baza de date.\n\nÎncearcă: **Chimie** // **Tipuri** (K-29, K-49...) // **Balistic** // **Temperaturi** // **Producție** // **Istorie** // **Limite** // **Comparații** // **NASA / Spațiu**`;
+            return `Could not find exactly that in the database.\n\nTry: **Chemistry** // **Types** (K-29, K-49...) // **Ballistic** // **Temperature** // **Production** // **History** // **Limits** // **Comparisons** // **NASA / Space**`;
         }
         let kcBusy = false;
         const kcMsgsEl = document.getElementById('kcMsgs');
-        function kcTs() { return new Date().toLocaleTimeString('ro-RO', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); }
+        function kcTs() { return new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit' }); }
         function kcFmt(text) {
             text = text.replace(/((\|.+\|\n?)+)/g, match => {
                 const rows = match.trim().split('\n').filter(r => r.trim());
@@ -3250,7 +3312,7 @@
         }
         function kcShowTyping() {
             const el = document.createElement('div'); el.id = 'kcTyping'; el.className = 'kc-msg kc-ai';
-            el.innerHTML = `<div class="kc-meta"><div class="kc-tag">KEVLAR_AI</div> PROCESARE...</div><div class="kc-typing">ANALIZÂND <div class="kc-tdots"><span></span><span></span><span></span></div></div>`;
+            el.innerHTML = `<div class="kc-meta"><div class="kc-tag">KEVLAR_AI</div> PROCESSING...</div><div class="kc-typing">ANALYZING <div class="kc-tdots"><span></span><span></span><span></span></div></div>`;
             kcMsgsEl.appendChild(el); kcMsgsEl.scrollTop = kcMsgsEl.scrollHeight;
         }
         function kcSend() {
@@ -3966,8 +4028,78 @@
         }
     </style>
 
+    <!-- ── SCROLL REVEAL ENGINE ── -->
     <script>
-        /* ── HUD GRAPH MINI ANIMATION ── */
+        (function () {
+            'use strict';
+
+            // All selectors that should animate on scroll
+            const REVEAL_SELECTORS = [
+                '.scroll-reveal',
+                '.scroll-reveal-left',
+                '.scroll-reveal-right'
+            ].join(', ');
+
+            function initScrollReveal() {
+                const elements = document.querySelectorAll(REVEAL_SELECTORS);
+                if (!elements.length) return;
+
+                // IntersectionObserver: trigger when 15% of element is visible
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            // Once revealed, stop observing (animation is one-shot)
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    threshold: 0.12,        // 12% visible triggers animation
+                    rootMargin: '0px 0px -40px 0px' // small bottom offset so it triggers just before fully in view
+                });
+
+                elements.forEach(el => observer.observe(el));
+            }
+
+            // Also re-run when timeline section becomes visible (it starts hidden)
+            function observeSectionReveal() {
+                const timelineSection = document.getElementById('timeline-section');
+                if (!timelineSection) return;
+
+                const sectionObserver = new MutationObserver(() => {
+                    // When the hidden class is removed, re-init for newly visible elements
+                    if (!timelineSection.classList.contains('timeline-collapsed')) {
+                        setTimeout(() => {
+                            const els = timelineSection.querySelectorAll(REVEAL_SELECTORS + ':not(.visible)');
+                            const innerObserver = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        entry.target.classList.add('visible');
+                                        innerObserver.unobserve(entry.target);
+                                    }
+                                });
+                            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                            els.forEach(el => innerObserver.observe(el));
+                        }, 100);
+                    }
+                });
+
+                sectionObserver.observe(timelineSection, { attributes: true, attributeFilter: ['class'] });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => {
+                    initScrollReveal();
+                    observeSectionReveal();
+                });
+            } else {
+                initScrollReveal();
+                observeSectionReveal();
+            }
+        })();
+    </script>
+
+</body>
         (function () {
             const canvas = document.getElementById('hud-graph');
             if (!canvas) return;
