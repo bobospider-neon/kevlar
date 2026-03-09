@@ -16,6 +16,41 @@
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=2">
+    <style>
+        /* ── SCROLL REVEAL ANIMATIONS ── */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: opacity, transform;
+        }
+        .scroll-reveal.visible { opacity: 1; transform: translateY(0); }
+        .scroll-reveal.delay-1 { transition-delay: 0.1s; }
+        .scroll-reveal.delay-2 { transition-delay: 0.2s; }
+        .scroll-reveal.delay-3 { transition-delay: 0.3s; }
+        .scroll-reveal.delay-4 { transition-delay: 0.4s; }
+        .scroll-reveal.delay-5 { transition-delay: 0.5s; }
+        .scroll-reveal-left {
+            opacity: 0;
+            transform: translateX(-40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .scroll-reveal-left.visible { opacity: 1; transform: translateX(0); }
+        .scroll-reveal-right {
+            opacity: 0;
+            transform: translateX(40px);
+            transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .scroll-reveal-right.visible { opacity: 1; transform: translateX(0); }
+        @media (prefers-reduced-motion: reduce) {
+            .scroll-reveal, .scroll-reveal-left, .scroll-reveal-right {
+                transition: none; opacity: 1; transform: none;
+            }
+        }
+    </style>
 
     <!-- Video Section Styles -->
     <style>
@@ -1182,9 +1217,9 @@
                 <div class="timeline-wrapper">
                     <div class="timeline-line"></div>
 
-                    <div class="timeline-node" data-year="1965">
-                        <div class="timeline-year-badge military-text gold-glow">1965</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
+                    <div class="timeline-node scroll-reveal" data-year="1965">
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">1965</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
                             <h3 class="military-text gold">THE ACCIDENTAL DISCOVERY</h3>
                             <p>Stephanie Kwolek, chemist at DuPont, was working on finding a lightweight fiber for
                                 tires.
@@ -1198,9 +1233,9 @@
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="1971">
-                        <div class="timeline-year-badge military-text cyber-glow">1971</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
+                    <div class="timeline-node scroll-reveal" data-year="1971">
+                        <div class="timeline-year-badge military-text cyber-glow scroll-reveal-left delay-1">1971</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
                             <h3 class="military-text cyan">COMMERCIAL PRODUCTION</h3>
                             <p>After 6 years of research and development, Kevlar enters commercial production under the
                                 DuPont patent. First applications: automotive industry and industrial equipment.</p>
@@ -1211,9 +1246,9 @@
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="1975">
-                        <div class="timeline-year-badge military-text gold-glow">1975</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
+                    <div class="timeline-node scroll-reveal" data-year="1975">
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">1975</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
                             <h3 class="military-text gold">BULLETPROOF VESTS</h3>
                             <p>First application in ballistic protection equipment. Kevlar bulletproof vests begin
                                 saving the lives of police officers and soldiers around the world.</p>
@@ -1224,9 +1259,9 @@
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="1988">
-                        <div class="timeline-year-badge military-text cyber-glow">1988</div>
-                        <div class="timeline-content tactical-border timeline-ultra-card">
+                    <div class="timeline-node scroll-reveal" data-year="1988">
+                        <div class="timeline-year-badge military-text cyber-glow scroll-reveal-left delay-1">1988</div>
+                        <div class="timeline-content tactical-border timeline-ultra-card scroll-reveal delay-2">
                             <h3 class="military-text cyan">NASA APPLICATIONS</h3>
                             <p>NASA adopts Kevlar for protecting space crews against micrometeoroids and orbital
                                 debris. The material becomes standard for ISS missions.</p>
@@ -1237,9 +1272,9 @@
                         </div>
                     </div>
 
-                    <div class="timeline-node" data-year="2026">
-                        <div class="timeline-year-badge military-text gold-glow">PREZENT</div>
-                        <div class="timeline-content tactical-border ultra-card">
+                    <div class="timeline-node scroll-reveal" data-year="2026">
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">PREZENT</div>
+                        <div class="timeline-content tactical-border ultra-card scroll-reveal delay-2">
                             <canvas class="ultra-card-canvas" id="uc-canvas"></canvas>
                             <div class="uc-corner tl"></div>
                             <div class="uc-corner tr"></div>
@@ -1291,12 +1326,12 @@
                 </div>
 
                 <!-- Technical Documentation Grid -->
-                <div class="data-stream" style="margin-top: 4rem;">[TECHNICAL_DOCS] // MOLECULAR_PROPERTIES</div>
-                <h3 class="military-text section-title cyber-glow" style="font-size: 2rem; margin: 2rem 0;">TECHNICAL
+                <div class="data-stream scroll-reveal" style="margin-top: 4rem;">[TECHNICAL_DOCS] // MOLECULAR_PROPERTIES</div>
+                <h3 class="military-text section-title cyber-glow scroll-reveal delay-1" style="font-size: 2rem; margin: 2rem 0;">TECHNICAL
                     DOCUMENTATION</h3>
 
                 <div class="hud-doc-grid">
-                    <div class="hud-doc-card" data-color="gold">
+                    <div class="hud-doc-card scroll-reveal delay-1" data-color="gold">
                         <div class="hdc-scan"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1324,7 +1359,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="cyan">
+                    <div class="hud-doc-card scroll-reveal delay-2" data-color="cyan">
                         <div class="hdc-scan" style="animation-delay:-1.3s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1352,7 +1387,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="gold">
+                    <div class="hud-doc-card scroll-reveal delay-3" data-color="gold">
                         <div class="hdc-scan" style="animation-delay:-2.7s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1381,7 +1416,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="cyan">
+                    <div class="hud-doc-card scroll-reveal delay-4" data-color="cyan">
                         <div class="hdc-scan" style="animation-delay:-0.5s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1411,7 +1446,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="gold">
+                    <div class="hud-doc-card scroll-reveal delay-3" data-color="gold">
                         <div class="hdc-scan" style="animation-delay:-1.8s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1440,7 +1475,7 @@
                         </div>
                     </div>
 
-                    <div class="hud-doc-card" data-color="cyan">
+                    <div class="hud-doc-card scroll-reveal delay-4" data-color="cyan">
                         <div class="hdc-scan" style="animation-delay:-3.1s"></div>
                         <div class="hdc-corner tl"></div>
                         <div class="hdc-corner tr"></div>
@@ -1475,7 +1510,7 @@
                     <h3 class="military-text section-title rgb-text" style="font-size: 2rem; margin: 2rem 0;">KEVLAR VS
                         SPIDER SILK</h3>
 
-                    <div class="myth-buster tactical-border glow-card">
+                    <div class="myth-buster tactical-border glow-card scroll-reveal">
                         <div class="myth-header">
                             <span class="myth-icon">🕷️</span>
                             <h4 class="military-text gold">MYTH BUSTED</h4>
@@ -1487,8 +1522,8 @@
                         </p>
                     </div>
 
-                    <div class="silk-compare-grid">
-                        <div class="compare-column tactical-border">
+                    <div class="silk-compare-grid scroll-reveal delay-1">
+                        <div class="compare-column tactical-border scroll-reveal-left delay-2">
                             <h4 class="military-text gold">🧬 SPIDER SILK</h4>
                             <ul>
                                 <li><span class="prop">Strength:</span> <span class="val cyan">Very high</span></li>
@@ -1500,7 +1535,7 @@
                         <div class="compare-vs">
                             <span class="military-text rgb-text">VS</span>
                         </div>
-                        <div class="compare-column tactical-border">
+                        <div class="compare-column tactical-border scroll-reveal-right delay-2">
                             <h4 class="military-text cyan">🛡️ KEVLAR</h4>
                             <ul>
                                 <li><span class="prop">Strength:</span> <span class="val gold">Even higher</span></li>
@@ -1511,7 +1546,7 @@
                         </div>
                     </div>
 
-                    <div class="similarity-note tactical-border">
+                    <div class="similarity-note tactical-border scroll-reveal delay-3">
                         <p><strong class="gold">Why are they similar then?</strong> Both have aligned molecular chains,
                             very strong bonds along the fiber direction, and distribute force along the thread. It's
                             materials physics, not inspiration from nature! 🧠</p>
@@ -1521,7 +1556,7 @@
                 <!-- Stephanie Kwolek Bio -->
                 <div class="bio-section">
                     <div class="data-stream" style="margin-top: 4rem;">[BIOGRAPHY] // INVENTOR_PROFILE</div>
-                    <div class="bio-card tactical-border glow-card">
+                    <div class="bio-card tactical-border glow-card scroll-reveal">
                         <div class="bio-header">
                             <div class="bio-avatar">👩‍🔬</div>
                             <div class="bio-info">
@@ -4058,6 +4093,56 @@
                 requestAnimationFrame(draw);
             }
             draw();
+        })();
+    </script>
+
+    <!-- ── SCROLL REVEAL ENGINE ── -->
+    <script>
+        (function () {
+            'use strict';
+            const REVEAL_SELECTORS = ['.scroll-reveal', '.scroll-reveal-left', '.scroll-reveal-right'].join(', ');
+
+            function initScrollReveal() {
+                const elements = document.querySelectorAll(REVEAL_SELECTORS);
+                if (!elements.length) return;
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                elements.forEach(el => observer.observe(el));
+            }
+
+            function observeSectionReveal() {
+                const timelineSection = document.getElementById('timeline-section');
+                if (!timelineSection) return;
+                const sectionObserver = new MutationObserver(() => {
+                    if (!timelineSection.classList.contains('timeline-collapsed')) {
+                        setTimeout(() => {
+                            const els = timelineSection.querySelectorAll(REVEAL_SELECTORS + ':not(.visible)');
+                            const innerObserver = new IntersectionObserver((entries) => {
+                                entries.forEach(entry => {
+                                    if (entry.isIntersecting) {
+                                        entry.target.classList.add('visible');
+                                        innerObserver.unobserve(entry.target);
+                                    }
+                                });
+                            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+                            els.forEach(el => innerObserver.observe(el));
+                        }, 100);
+                    }
+                });
+                sectionObserver.observe(timelineSection, { attributes: true, attributeFilter: ['class'] });
+            }
+
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', () => { initScrollReveal(); observeSectionReveal(); });
+            } else {
+                initScrollReveal(); observeSectionReveal();
+            }
         })();
     </script>
 
