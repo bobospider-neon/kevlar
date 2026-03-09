@@ -22,40 +22,59 @@
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: opacity, transform;
         }
+
         .scroll-reveal.visible {
             opacity: 1;
             transform: translateY(0);
         }
+
         /* Stagger delays for children */
-        .scroll-reveal.delay-1 { transition-delay: 0.1s; }
-        .scroll-reveal.delay-2 { transition-delay: 0.2s; }
-        .scroll-reveal.delay-3 { transition-delay: 0.3s; }
-        .scroll-reveal.delay-4 { transition-delay: 0.4s; }
-        .scroll-reveal.delay-5 { transition-delay: 0.5s; }
+        .scroll-reveal.delay-1 {
+            transition-delay: 0.1s;
+        }
+
+        .scroll-reveal.delay-2 {
+            transition-delay: 0.2s;
+        }
+
+        .scroll-reveal.delay-3 {
+            transition-delay: 0.3s;
+        }
+
+        .scroll-reveal.delay-4 {
+            transition-delay: 0.4s;
+        }
+
+        .scroll-reveal.delay-5 {
+            transition-delay: 0.5s;
+        }
 
         /* Slide from left variant */
         .scroll-reveal-left {
             opacity: 0;
             transform: translateX(-40px);
             transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: opacity, transform;
         }
+
         .scroll-reveal-left.visible {
             opacity: 1;
             transform: translateX(0);
         }
+
         /* Slide from right variant */
         .scroll-reveal-right {
             opacity: 0;
             transform: translateX(40px);
             transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
-                        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+                transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
             will-change: opacity, transform;
         }
+
         .scroll-reveal-right.visible {
             opacity: 1;
             transform: translateX(0);
@@ -63,6 +82,7 @@
 
         /* For users who prefer reduced motion */
         @media (prefers-reduced-motion: reduce) {
+
             .scroll-reveal,
             .scroll-reveal-left,
             .scroll-reveal-right {
@@ -340,7 +360,7 @@
             }
         }
     </style>
-    <a href="../index.html" class="lang-switch-btn">RO</a>
+    <a href="site_eng/index.html" class="lang-switch-btn">EN</a>
 
     <!-- KEVLAR AAA BACKGROUND -->
     <canvas id="cvs"></canvas>
@@ -1294,7 +1314,8 @@
                     </div>
 
                     <div class="timeline-node scroll-reveal" data-year="2026">
-                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">PREZENT</div>
+                        <div class="timeline-year-badge military-text gold-glow scroll-reveal-left delay-1">PREZENT
+                        </div>
                         <div class="timeline-content tactical-border ultra-card scroll-reveal delay-2">
                             <canvas class="ultra-card-canvas" id="uc-canvas"></canvas>
                             <div class="uc-corner tl"></div>
@@ -1347,8 +1368,10 @@
                 </div>
 
                 <!-- Technical Documentation Grid -->
-                <div class="data-stream scroll-reveal" style="margin-top: 4rem;">[TECHNICAL_DOCS] // MOLECULAR_PROPERTIES</div>
-                <h3 class="military-text section-title cyber-glow scroll-reveal delay-1" style="font-size: 2rem; margin: 2rem 0;">TECHNICAL
+                <div class="data-stream scroll-reveal" style="margin-top: 4rem;">[TECHNICAL_DOCS] //
+                    MOLECULAR_PROPERTIES</div>
+                <h3 class="military-text section-title cyber-glow scroll-reveal delay-1"
+                    style="font-size: 2rem; margin: 2rem 0;">TECHNICAL
                     DOCUMENTATION</h3>
 
                 <div class="hud-doc-grid">
@@ -4098,8 +4121,8 @@
             }
         })();
     </script>
-
-</body>
+    <script>
+        /* ── HUD GRAPH MINI ANIMATION ── */
         (function () {
             const canvas = document.getElementById('hud-graph');
             if (!canvas) return;
@@ -4185,7 +4208,6 @@
             draw();
         })();
     </script>
-
 </body>
 
 </html>
